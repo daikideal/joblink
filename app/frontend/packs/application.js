@@ -3,6 +3,9 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import '../stylesheets/application'
+import 'materialize-css/dist/js/materialize'
+
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
