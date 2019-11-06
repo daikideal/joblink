@@ -10,6 +10,10 @@ html
     link[href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"]
   body
     = render 'layouts/header'
+    p.notice
+      = notice
+    p.alert
+      = alert
     .container
       = yield
     = render 'layouts/footer'
