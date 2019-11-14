@@ -2,9 +2,10 @@ nav
   .nav-wrapper
     = link_to "JOBLINK", root_path, class: "brand-logo"
     ul#nav-mobile.right.hide-on-med-and-down
-      li
-        = link_to "Link 1", '#'
-      li
-        = link_to "Link 2", '#'
-      li
-        = link_to "Link 3", '#'
+      - if job_offerer_signed_in?
+        li = link_to "Link 1", '#'
+        li = link_to "Link 2", '#'
+        li = link_to "ログアウト", destroy_job_offerer_session_path, method: :delete
+      - else
+        li = link_to "サインアップ", new_job_offerer_registration_path
+        li = link_to "ログイン", new_job_offerer_session_path

@@ -1,4 +1,9 @@
 h1.center-align
   | JOBLINK
-p.center-align
-  | ここはJOBLINKのHomeページです
+- if job_offerer_signed_in?
+  p.center-align
+    | こんにちは、
+    = current_job_offerer.email
+- else  
+  p.center-align
+    | ここはJOBLINKのHomeページです
