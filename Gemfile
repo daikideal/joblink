@@ -50,6 +50,7 @@ group :development do
 
   gem 'html2slim'
   gem 'slim_lint', require: false
+  gem 'letter_opener_web'
 end
 
 group :test do
