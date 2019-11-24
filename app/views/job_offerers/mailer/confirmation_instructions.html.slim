@@ -1,0 +1,8 @@
+p
+  | ようこそ、 
+  = @email
+  |  様
+p
+  | 以下のリンクよりユーザー登録を完了してください
+p
+  = link_to 'ユーザー登録を完了', confirmation_url(@resource, confirmation_token: @token)
