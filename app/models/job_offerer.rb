@@ -4,4 +4,6 @@ class JobOfferer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
+
+  has_one :job_offerer_information, dependent: :destroy
 end
