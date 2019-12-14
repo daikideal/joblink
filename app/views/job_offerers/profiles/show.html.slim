@@ -1,0 +1,15 @@
+h3
+  | ユーザー情報
+i.large.material-icons
+  | account_circle
+
+p
+  = @profile.last_name_furigana
+  = @profile.first_name_furigana
+h4
+  = @profile.last_name
+  = @profile.first_name
+h5
+  = @profile.job_offerer.email
+p
+  = @profile.bio

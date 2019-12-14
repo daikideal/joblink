@@ -5,5 +5,5 @@ class JobOfferer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  has_one :job_offerer_information, dependent: :destroy
+  has_one :job_offerer_profile, dependent: :destroy
 end
