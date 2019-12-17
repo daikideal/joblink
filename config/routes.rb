@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     confirmations: 'job_offerers/confirmations'
   }
 
+  devise_scope :job_offerer do
+    get 'confirm_email', to: 'job_offerers/registrations#confirm_email'
+  end
+
   scope module: :job_offerers do
     resources :job_offerers, only: %i[index show], controller: :profiles do
       resource :profile, except: %i[show destroy]
