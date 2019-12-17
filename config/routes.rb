@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :job_offerers, controllers: {
     sessions: 'job_offerers/sessions',
     passwords: 'job_offerers/passwords',
-    registrations: 'job_offerers/registrations'
+    registrations: 'job_offerers/registrations',
+    confirmations: 'job_offerers/confirmations'
   }
 
   scope module: :job_offerers do
