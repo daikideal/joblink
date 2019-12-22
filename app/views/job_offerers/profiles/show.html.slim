@@ -1,15 +1,19 @@
-h3
-  | ユーザー情報
-i.large.material-icons
-  | account_circle
-
-p
-  = @profile.last_name_furigana
-  = @profile.first_name_furigana
-h4
-  = @profile.last_name
-  = @profile.first_name
-h5
-  = @profile.job_offerer.email
-p
-  = @profile.bio
+.section
+  .row
+    i.material-icons.large
+      | account_circle
+  .col.s2.offset-s2
+    = link_to '編集', edit_job_offerer_profile_path(@profile), class: 'btn right'
+  .col.s10
+    h4
+      ruby
+        rb
+          = @profile.last_name
+          = @profile.first_name
+        rt
+          = @profile.last_name_furigana
+          = @profile.first_name_furigana
+    p
+      = @profile.job_offerer.email
+  blockquote
+    = @profile.bio
