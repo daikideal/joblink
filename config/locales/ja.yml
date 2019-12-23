@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      job_offerer_profile:
+        first_name: 名
+        last_name: 姓
+        first_name_furigana: 名(ふりがな)
+        last_name_furigana: 姓(ふりがな)
+        
