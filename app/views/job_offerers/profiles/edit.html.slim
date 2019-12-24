@@ -4,18 +4,26 @@ h3
   = render 'layouts/error_messages', model: f.object
   .row
     .input-field.col.s6
-      = f.label '名'
-      = f.text_field :first_name
-    .input-field.col.s6
       = f.label '姓'
       = f.text_field :last_name
-  .row
+      span.helper-text
+        '*必須項目
     .input-field.col.s6
-      = f.label '名(ふりがな)'
-      = f.text_field :first_name_furigana
+      = f.label '名'
+      = f.text_field :first_name
+      span.helper-text
+        '*必須項目
+  .row
     .input-field.col.s6
       = f.label '姓(ふりがな)'
       = f.text_field :last_name_furigana
+      span.helper-text
+        '*必須項目
+    .input-field.col.s6
+      = f.label '名(ふりがな)'
+      = f.text_field :first_name_furigana
+      span.helper-text
+        '*必須項目
   .row
     .input-field.col.s12
       = f.label 'プロフィール'
