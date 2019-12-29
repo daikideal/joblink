@@ -1,20 +1,21 @@
 h2
-  | Log in
+  | ログイン
 = form_with model: @job_offerer, url: job_offerer_session_path, local: true do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
+  .row
+    .input-field
+      = f.label 'メールアドレス'
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+  .row
+    .input-field
+      = f.label 'パスワード'
+      = f.password_field :password, autocomplete: "current-password"
   - if devise_mapping.rememberable?
-    .field
+    .row
       label
         = f.check_box :remember_me
         span
-          = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "job_offerers/shared/links"
+          = f.label :remember_me, 'ログイン状態を維持する'
+  .row
+    = f.submit "ログイン", class: 'btn'
+.section
+  = render "job_offerers/shared/links"
