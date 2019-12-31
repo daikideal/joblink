@@ -16,6 +16,7 @@ h2
         span
           = f.label :remember_me, 'ログイン状態を維持する'
   .row
-    = f.submit "ログイン", class: 'btn'
+    .actions
+      = f.submit "ログイン", class: 'btn'
 .section
   = render "job_offerers/shared/links"
