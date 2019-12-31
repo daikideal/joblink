@@ -1,24 +1,26 @@
 h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  | サインアップ
+= form_with model: @job_offerer, local: true do |f|
   = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "job_offerers/shared/links"
+  .row
+    .input-field
+      = f.label 'メールアドレス'
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+  .row
+    .input-field
+      = f.label 'パスワード'
+      = f.password_field :password, autocomplete: "new-password"
+      - if @minimum_password_length
+        span.helper-text
+          | *パスワードは
+          = @minimum_password_length
+          | 文字以上
+  .row
+    .input-field
+      = f.label 'パスワード(確認)'
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+  .row
+    .actions
+      = f.submit 'サインアップ', class: 'btn'
+.section
+  = render "job_offerers/shared/links"
