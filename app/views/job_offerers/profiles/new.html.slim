@@ -1,33 +1,33 @@
 h3
-  | ユーザー情報の登録
+  | プロフィールの登録
 = form_with model: @profile, url: job_offerer_profile_path,  local: true do |f|
   = render 'layouts/error_messages', model: f.object
   .row
     .input-field.col.s6
       = f.label '姓'
-      = f.text_field :last_name
+      = f.text_field :last_name, autofocus: true
       span.helper-text
-        '*必須項目
+        | *必須項目
     .input-field.col.s6
       = f.label '名'
       = f.text_field :first_name
       span.helper-text
-        '*必須項目
+        | *必須項目
   .row
     .input-field.col.s6
       = f.label '姓(ふりがな)'
       = f.text_field :last_name_furigana
       span.helper-text
-        '*必須項目
+        | *必須項目
     .input-field.col.s6
       = f.label '名(ふりがな)'
       = f.text_field :first_name_furigana
       span.helper-text
-        '*必須項目
+        | *必須項目
   .row
     .input-field.col.s12
-      = f.label 'プロフィール'
+      = f.label '自己紹介'
       = f.text_area :bio, class: 'materialize-textarea'
   .row
-    .action
+    .actions
       = f.submit '登録', class: 'btn right'
