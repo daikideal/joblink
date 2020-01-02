@@ -17,3 +17,6 @@
       = @profile.job_offerer.email
   blockquote
     = @profile.bio
+.section
+  .row
+    = link_to 'アカウント設定', edit_job_offerer_registration_path(current_job_offerer)
