@@ -2,6 +2,19 @@ h3
   | プロフィールの編集
 = form_with model: @profile, local: true do |f|
   = render 'layouts/error_messages', model: f.object
+  .row.valign-wrapper
+    .col.s6
+      - if @profile.avatar.attached?
+        = image_tag @profile.avatar.variant(resize_to_fill: [200,200]), class: 'circle responsive-img'
+      - else
+        i.material-icons.large
+          | account_circle
+    .file-field.input-field.col.s6
+      .btn 
+        span アバター
+        = f.file_field :avatar
+      .file-path-wrapper
+        = f.text_field :file_path, class: 'file-path validate'
   .row
     .input-field.col.s6
       = f.label '姓'

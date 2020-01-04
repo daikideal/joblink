@@ -43,7 +43,8 @@ class JobOfferers::ProfilesController < ApplicationController
       :first_name, :last_name,
       :first_name_furigana,
       :last_name_furigana,
-      :bio
+      :bio,
+      :avatar
     )
   end
 end
