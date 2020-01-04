@@ -3,8 +3,7 @@
     - if @profile.avatar.attached?
       = image_tag @profile.avatar.variant(resize_to_fill: [200,200]), class: 'circle responsive-img'
     - else
-      i.material-icons.large
-        | account_circle
+      = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2
     = link_to '編集', edit_job_offerer_profile_path(@profile), class: 'btn right'
   .col.s10
