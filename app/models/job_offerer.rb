@@ -6,4 +6,5 @@ class JobOfferer < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_one :job_offerer_profile, dependent: :destroy
+  has_many :job_postings, dependent: :destroy
 end

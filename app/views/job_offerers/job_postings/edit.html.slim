@@ -1,0 +1,17 @@
+h3
+  | 求人情報の編集
+= form_with model: @job_posting, local: true do |f|
+  .row
+    .input-field
+      = f.label 'タイトル'
+      = f.text_field :title
+  .row
+    .input-field
+      = f.label '本文'
+      = f.text_area :content, class: 'materialize-textarea'
+  .row
+    .actions
+      = f.submit '更新', class: 'btn right'
+.row
+  .right
+    = link_to '戻る', :back

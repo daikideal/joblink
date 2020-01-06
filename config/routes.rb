@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :job_offerers, only: %i[index show], controller: :profiles do
       resource :profile, except: %i[show destroy]
     end
+    resources :job_postings
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

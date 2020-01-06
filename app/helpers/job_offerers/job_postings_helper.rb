@@ -1,0 +1,2 @@
+module JobOfferers::JobPostingsHelper
+end

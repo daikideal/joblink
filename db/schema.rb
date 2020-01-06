@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_152317) do
+ActiveRecord::Schema.define(version: 2020_01_05_064322) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 2020_01_03_152317) do
     t.index ["unlock_token"], name: "index_job_offerers_on_unlock_token", unique: true
   end
 
+  create_table "job_postings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "job_offerer_id", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_offerer_id"], name: "index_job_postings_on_job_offerer_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "job_offerer_profiles", "job_offerers", on_delete: :cascade
+  add_foreign_key "job_postings", "job_offerers", on_delete: :cascade
 end
