@@ -1,5 +1,9 @@
 .section
   .row
+    - if @job_posting.header.attached?
+      .image
+        = image_tag @job_posting.shaped_header, class: 'responsive-img'
+  .row
     h3
       = @job_posting.title
   .row

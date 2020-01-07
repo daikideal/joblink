@@ -2,6 +2,17 @@ h3
   | 新規求人
 = form_with model: @job_posting, local: true do |f|
   .row
+    .center
+        = image_tag '/no_image.png', id: :header_prev, class:'responsive-img', size: '500x500'
+    .file-field.input-field.col.s6
+      .btn 
+        span ヘッダー
+        = f.file_field :header, id: :header_img
+      .file-path-wrapper
+        = f.text_field :file_path, class: 'file-path validate'
+      span.helper-text
+        | *画像を選択するとプレビューを表示します
+  .row
     .input-field
       = f.label 'タイトル'
       = f.text_field :title

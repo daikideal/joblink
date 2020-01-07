@@ -3,9 +3,13 @@ h2
 .section
   .collection
     - @job_postings.each do |job_posting|
-      = link_to(job_posting_path(job_posting), class: 'collection-item') do
-        .row
+      = link_to(job_posting_path(job_posting), class: 'collection-item black-text') do
+        - if job_posting.header.attached?
+          = image_tag job_posting.thumbnail, class: 'responsive-img'
+        h5
           = job_posting.title
+        p
+          = job_posting.content
 .section
   .row
     .right

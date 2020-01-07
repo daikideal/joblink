@@ -46,6 +46,7 @@ class JobOfferers::JobPostingsController < ApplicationController
 
   def posting_params
     params.require(:job_posting).permit(
+      :header,
       :title,
       :content
     )
