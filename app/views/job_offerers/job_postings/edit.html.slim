@@ -22,7 +22,7 @@ h3
   .row
     .input-field
       = f.label '本文'
-      = f.text_area :content, class: 'materialize-textarea'
+      = f.rich_text_area :content
   .row
     .actions
       = f.submit '更新', class: 'btn right'

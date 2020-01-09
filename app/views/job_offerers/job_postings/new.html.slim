@@ -17,9 +17,9 @@ h3
       = f.label 'タイトル'
       = f.text_field :title
   .row
-    .input-field
+    .field
       = f.label '本文'
-      = f.text_area :content, class: 'materialize-textarea'
+      = f.rich_text_area :content
   .row
     .actions
       = f.submit '投稿', class: 'btn right'
