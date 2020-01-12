@@ -1,42 +1,54 @@
-h2
-  | Edit 
-  = resource_name.to_s.humanize
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
-    i
-      | (leave blank if you don't want to change it)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
+.section
+  h2
+    | アカウント設定
+  = form_with model: @job_seeker, url: job_seeker_registration_path, local: true do |f|
+    = render "devise/shared/error_messages", model: f.object
+    .row
+      .input-field
+        = f.label 'メールアドレス'
+        = f.email_field :email, autocomplete: "email"
+        span.helper-text
+          | *変更しない場合は編集不要
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      .card-panel
+        | 新しいメールアドレスがまだ認証されていません : 
+        = resource.unconfirmed_email
+    .row
+      .input-field
+        = f.label '新しいパスワード'
+        = f.password_field :password, autocomplete: "new-password"
+        span.helper-text
+          | *変更しない場合は入力不要
+          - if @minimum_password_length
+            br
+            | *パスワードは
+            = @minimum_password_length
+            | 文字以上
+    .row
+      .input-field
+        = f.label '新しいパスワード(確認)'
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+    .row
+      .input-field
+        = f.label '現在のパスワード'
+        = f.password_field :current_password, autocomplete: "current-password"
+        span.helper-text
+          | *ご本人の変更かを確認するため、パスワードを入力してください。
+    .row
+      .actions
+        = f.submit "更新", class: 'btn right'
+.divider
+.section
+  h3
+    | アカウントを削除する
+  .row
+    p
+      | サービスが気に入りませんでしたか？
       br
-      em
-        = @minimum_password_length
-        |  characters minimum
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    i
-      | (we need your current password to confirm your changes)
-    br
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+      | 以下のリンクからアカウントを削除できます。
+  .row
+    = link_to "退会する", job_seeker_registration_path, data: { confirm: "本当に退会しますか?" }, method: :delete
+    p
+      | *削除したアカウントは完全に復元できなくなります
+  .row  
+    = link_to "戻る", :back, class: 'btn right'
