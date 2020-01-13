@@ -16,7 +16,7 @@ class JobSeekers::ConfirmationsController < Devise::ConfirmationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # The path used after resending confirmation instructions.
   # def after_resending_confirmation_instructions_path_for(resource_name)
@@ -24,7 +24,15 @@ class JobSeekers::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # The path used after confirmation.
-  # def after_confirmation_path_for(resource_name, resource)
-  #   super(resource_name, resource)
-  # end
+  def after_confirmation_path_for(resource_name, resource)
+    # super(resource_name, resource)
+    sign_in(resource)
+    if current_job_seeker.job_seeker_profile.blank?
+      flash[:notice] = 'メールアドレスが認証されました。続いてプロフィールを登録してください'
+      new_job_seeker_profile_path(resource)
+    else
+      flash[:notice] = 'メールアドレスが認証されました'
+      job_seeker_path(resource)
+    end
+  end
 end
