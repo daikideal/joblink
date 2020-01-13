@@ -1,4 +1,9 @@
 .section
+  .row
+    - if @profile.avatar.attached?
+      = image_tag @profile.shaped_avatar, class: 'circle responsive-img'
+    - else
+      = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2
     = link_to '編集', edit_job_seeker_profile_path(@profile), class: 'btn right'
   .col.s10
