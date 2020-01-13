@@ -21,8 +21,8 @@
     = @profile.bio
   .section
     h4
-     | 経歴書
-    = @profile.resume
+      | 経歴書
+    == @profile.resume
 .section
   .row
     = link_to 'アカウント設定', edit_job_seeker_registration_path(current_job_seeker)
