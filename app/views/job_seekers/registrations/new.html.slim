@@ -1,6 +1,6 @@
 h2
   | サインアップ
-= form_with model: @job_seeker, local: true do |f|
+= form_with model: @job_seeker, url: job_seeker_registration_path, local: true do |f|
   = render "devise/shared/error_messages", resource: resource
   .row
     .input-field
