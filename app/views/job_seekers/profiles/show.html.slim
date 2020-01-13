@@ -1,0 +1,23 @@
+.section
+  .col.s2.offset-s2
+    = link_to '編集', edit_job_seeker_profile_path(@profile), class: 'btn right'
+  .col.s10
+    h4
+      ruby
+        rb
+          = @profile.last_name
+          = @profile.first_name
+        rt
+          = @profile.last_name_furigana
+          = @profile.first_name_furigana
+    p
+      = @profile.job_seeker.email
+  blockquote
+    = @profile.bio
+  .section
+    h4
+     | 経歴書
+    = @profile.resume
+.section
+  .row
+    = link_to 'アカウント設定', edit_job_seeker_registration_path(current_job_seeker)

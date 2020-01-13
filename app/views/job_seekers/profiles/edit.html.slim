@@ -1,0 +1,37 @@
+h3
+  | プロフィールの編集
+= form_with model: @profile, local: true do |f|
+  = render 'layouts/error_messages', model: f.object
+  .row
+    .input-field.col.s6
+      = f.label '姓'
+      = f.text_field :last_name
+      span.helper-text
+        | *必須項目
+    .input-field.col.s6
+      = f.label '名'
+      = f.text_field :first_name
+      span.helper-text
+        | *必須項目
+  .row
+    .input-field.col.s6
+      = f.label '姓(ふりがな)'
+      = f.text_field :last_name_furigana
+      span.helper-text
+        | *必須項目
+    .input-field.col.s6
+      = f.label '名(ふりがな)'
+      = f.text_field :first_name_furigana
+      span.helper-text
+        | *必須項目
+  .row
+    .input-field.col.s12
+      = f.label '自己紹介'
+      = f.text_area :bio, class: 'materialize-textarea'
+  .row
+    .input-field.col.s12
+      = f.label '経歴'
+      = f.text_area :resume, class: 'materialize-textarea'
+  .row
+    .actions
+      = f.submit '更新', class: 'btn right'
