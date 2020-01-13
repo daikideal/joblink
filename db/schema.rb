@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_075126) do
+ActiveRecord::Schema.define(version: 2020_01_13_062406) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -90,6 +90,19 @@ ActiveRecord::Schema.define(version: 2020_01_12_075126) do
     t.index ["job_offerer_id"], name: "index_job_postings_on_job_offerer_id"
   end
 
+  create_table "job_seeker_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "job_seeker_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "first_name_furigana"
+    t.string "last_name_furigana"
+    t.text "bio"
+    t.text "resume"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_seeker_id"], name: "index_job_seeker_profiles_on_job_seeker_id"
+  end
+
   create_table "job_seekers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -119,4 +132,5 @@ ActiveRecord::Schema.define(version: 2020_01_12_075126) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "job_offerer_profiles", "job_offerers", on_delete: :cascade
   add_foreign_key "job_postings", "job_offerers", on_delete: :cascade
+  add_foreign_key "job_seeker_profiles", "job_seekers", on_delete: :cascade
 end

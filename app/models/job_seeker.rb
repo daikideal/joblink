@@ -4,4 +4,6 @@ class JobSeeker < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
+  
+  has_one :job_seeker_profile, dependent: :destroy
 end
