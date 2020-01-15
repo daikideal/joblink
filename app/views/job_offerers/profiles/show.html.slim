@@ -1,7 +1,7 @@
 .section
   .row
     - if @profile.avatar.attached?
-      = image_tag @profile.avatar.variant(resize_to_fill: [200,200]), class: 'circle responsive-img'
+      = image_tag @profile.shaped_avatar, class: 'circle responsive-img'
     - else
       = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2
