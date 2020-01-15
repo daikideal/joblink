@@ -2,7 +2,7 @@ class JobSeekers::ProfilesController < ApplicationController
   before_action :authenticate_job_seeker!, except: %i[index show]
 
   def index
-    @job_seekers = JobSeeker.all
+    @profiles = JobSeekerProfile.page(params[:page])
   end
 
   def show
