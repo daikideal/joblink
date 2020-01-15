@@ -10,6 +10,7 @@ h2
           = job_posting.title
         p
           == job_posting.content
+  = paginate @job_postings
 .section
   .row
     .right
