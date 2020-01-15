@@ -10,11 +10,9 @@
     h4
       ruby
         rb
-          = @profile.last_name
-          = @profile.first_name
+          = @profile.full_name
         rt
-          = @profile.last_name_furigana
-          = @profile.first_name_furigana
+          = @profile.full_name_furigana
     p
       = @profile.job_offerer.email
   blockquote

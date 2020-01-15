@@ -7,7 +7,7 @@ h2
         - if profile.avatar.attached?
           = image_tag profile.shaped_avatar, class: 'circle'
           span.title
-             = profile.first_name
+             = profile.full_name
           p
              = profile.bio
   = paginate @profiles
