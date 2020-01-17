@@ -2,7 +2,7 @@ class JobOfferers::JobPostingsController < ApplicationController
   before_action :authenticate_job_offerer!, except: %i[index show]
 
   def index
-    @job_postings = JobPosting.all
+    @job_postings = JobPosting.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   def show

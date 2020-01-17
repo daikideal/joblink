@@ -1,0 +1,52 @@
+h3
+  | プロフィールの編集
+= form_with model: @profile, local: true do |f|
+  = render 'layouts/error_messages', model: f.object
+  .row.valign-wrapper
+    .col.s6
+      .center
+        - if @profile.avatar.attached?
+          = image_tag @profile.shaped_avatar, id: :avatar_prev, class: 'circle responsive-img'
+        - else
+          = image_tag '/default_avatar.png', id: :avatar_prev, class: 'circle responsive-img', size: '200x200'
+    .file-field.input-field.col.s6
+      .btn 
+        span アバター
+        = f.file_field :avatar, id: :avatar_img
+      .file-path-wrapper
+        = f.text_field :file_path, class: 'file-path validate'
+  .row
+    .input-field.col.s6
+      = f.label '姓'
+      = f.text_field :last_name
+      span.helper-text
+        | *必須項目
+    .input-field.col.s6
+      = f.label '名'
+      = f.text_field :first_name
+      span.helper-text
+        | *必須項目
+  .row
+    .input-field.col.s6
+      = f.label '姓(ふりがな)'
+      = f.text_field :last_name_furigana
+      span.helper-text
+        | *必須項目
+    .input-field.col.s6
+      = f.label '名(ふりがな)'
+      = f.text_field :first_name_furigana
+      span.helper-text
+        | *必須項目
+  .row
+    .input-field.col.s12
+      = f.label '自己紹介'
+      = f.text_area :bio, class: 'materialize-textarea'
+  .row
+    .col.s12
+      h4
+        | 経歴書
+    .input-field.col.s12
+      = f.rich_text_area :resume
+  .row
+    .actions
+      = f.submit '更新', class: 'btn right'

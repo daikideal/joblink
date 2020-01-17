@@ -1,6 +1,6 @@
 h2
-  | 求人者 ログイン
-= form_with model: @job_offerer, url: job_offerer_session_path, local: true do |f|
+  | 求職者 ログイン
+= form_with model: @job_seeker, url: job_seeker_session_path, local: true do |f|
   .row
     .input-field
       = f.label 'メールアドレス'
@@ -19,4 +19,4 @@ h2
     .actions
       = f.submit "ログイン", class: 'btn'
 .section
-  = render "job_offerers/shared/links"
+  = render "job_seekers/shared/links"

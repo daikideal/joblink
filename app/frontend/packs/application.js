@@ -14,6 +14,7 @@ require("channels")
 require("jquery")
 
 require("custom/forms")
+require("custom/navbar")
 require("trix")
 require("@rails/actiontext")
 

@@ -19,6 +19,23 @@ Rails.application.routes.draw do
     resources :job_postings
   end
 
+  devise_for :job_seekers, controllers: {
+    sessions: 'job_seekers/sessions',
+    passwords: 'job_seekers/passwords',
+    registrations: 'job_seekers/registrations',
+    confirmations: 'job_seekers/confirmations'
+  }
+
+  devise_scope :job_seeker do
+    get 'confirm_email', to: 'job_seekers/registrations#confirm_email'
+  end
+
+  scope module: :job_seekers do
+    resources :job_seekers, only: %i[index show], controller: :profiles do
+      resource :profile, except: %i[show destroy]
+    end
+  end
+
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

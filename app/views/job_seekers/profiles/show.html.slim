@@ -5,7 +5,7 @@
     - else
       = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2
-    = link_to '編集', edit_job_offerer_profile_path(@profile), class: 'btn right'
+    = link_to '編集', edit_job_seeker_profile_path(@profile), class: 'btn right'
   .col.s10
     h4
       ruby
@@ -14,9 +14,13 @@
         rt
           = @profile.full_name_furigana
     p
-      = @profile.job_offerer.email
+      = @profile.job_seeker.email
   blockquote
     = @profile.bio
+  .section
+    h4
+      | 経歴書
+    == @profile.resume
 .section
   .row
-    = link_to 'アカウント設定', edit_job_offerer_registration_path(current_job_offerer)
+    = link_to 'アカウント設定', edit_job_seeker_registration_path(current_job_seeker)

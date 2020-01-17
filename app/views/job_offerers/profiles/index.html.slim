@@ -1,0 +1,13 @@
+h2
+  | 求人者
+.section
+  .collection
+    - @profiles.each do |profile|
+       = link_to(job_offerer_path(profile), class: 'collection-item avatar black-text') do
+        - if profile.avatar.attached?
+          = image_tag profile.shaped_avatar, class: 'circle'
+          span.title
+             = profile.full_name
+          p
+             = profile.bio
+  = paginate @profiles

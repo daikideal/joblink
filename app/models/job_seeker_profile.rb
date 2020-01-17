@@ -1,6 +1,7 @@
-class JobOffererProfile < ApplicationRecord
-  belongs_to :job_offerer
+class JobSeekerProfile < ApplicationRecord
+  belongs_to :job_seeker
   has_one_attached :avatar
+  has_rich_text :resume
   validates :first_name, :last_name,
             :first_name_furigana, :last_name_furigana,
             presence: true
