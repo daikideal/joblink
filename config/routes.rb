@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
   root 'home#home'
 
   devise_for :job_offerers, controllers: {
