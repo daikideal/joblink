@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'rooms/show'
   root 'home#home'
 
   devise_for :job_offerers, controllers: {
@@ -36,6 +35,8 @@ Rails.application.routes.draw do
       resource :profile, except: %i[show destroy]
     end
   end
+
+  get 'rooms/show'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
