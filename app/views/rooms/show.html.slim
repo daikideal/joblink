@@ -2,3 +2,6 @@ h1
   | トークルーム
 #messages
   = render @messages
+
+= label_tag :content, 'メッセージを送信'
+= text_field_tag :content, nil, data: { behavior: 'room_speaker' }
