@@ -9,11 +9,14 @@ consumer.subscriptions.create("RoomChannel", {
     // Called when the subscription has been terminated by the server
   },
 
-  received(data) {
+  received: function(data) {
     // Called when there's incoming data on the websocket for this channel
+    return alert(data['message']);
   },
 
-  speak: function() {
-    return this.perform('speak');
+  speak: function(message) {
+    return this.perform('speak', {
+      message: message
+    });
   }
 });
