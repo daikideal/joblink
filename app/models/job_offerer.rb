@@ -7,4 +7,5 @@ class JobOfferer < ApplicationRecord
 
   has_one :job_offerer_profile, dependent: :destroy
   has_many :job_postings, dependent: :destroy
+  has_many :messages
 end
