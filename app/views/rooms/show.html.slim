@@ -1,6 +1,6 @@
 h1
   | トークルーム
-#messages
+#messages data-room_id="#{ @room.id }"
   = render @messages
 
 = label_tag :content, 'メッセージを送信'

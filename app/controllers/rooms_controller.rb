@@ -2,7 +2,8 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
   
   def show
-    @messages = Message.all
+    @room = Room.find(params[:id])
+    @messages = @room.messages
   end
 
   protected

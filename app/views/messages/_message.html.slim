@@ -1,3 +1,7 @@
 .message
   p
     = message.content
+    br
+    | by 
+    = message.job_offerer.email
+    = message.job_seeker.email
