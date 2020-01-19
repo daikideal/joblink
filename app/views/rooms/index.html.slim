@@ -1,0 +1,7 @@
+h2
+  | トークルーム一覧
+.section
+  ul.collection
+    - @rooms.each do |room|
+      li.collection-item
+        = link_to "ROOM#{ room.id }", room_path(room)
