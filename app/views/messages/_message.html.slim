@@ -3,5 +3,7 @@
     = message.content
     br
     | by 
-    = message.job_offerer.email
-    = message.job_seeker.email
+    - if message.job_offerer_id
+      = message.job_offerer.email
+    - elsif message.job_seeker_id
+      = message.job_seeker.email
