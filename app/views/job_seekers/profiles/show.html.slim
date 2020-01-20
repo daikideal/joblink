@@ -6,7 +6,7 @@
       = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2.right
     = link_to '編集', edit_job_seeker_profile_path(@profile), class: 'btn'
-    - unless current_job_seeker == @job_seeker
+    - if job_offerer_signed_in?
       =< link_to 'メッセージ', rooms_path(entry: {job_offerer_id: current_job_offerer, job_seeker_id: @job_seeker}), method: :post, class: 'btn'
   .col.s10
     h4
