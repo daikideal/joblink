@@ -9,10 +9,10 @@ class RoomChannel < ApplicationCable::Channel
 
   def speak(data)
     # ActionCable.server.broadcast 'room_channel', message: data['message']
-    if job_offerer_signed_in?
-      Message.create! content: data['message'], job_offerer_id: current_job_offerer.id, room_id: ['room']
-    else
-      Message.create! content: data['message'], job_seeker_id: current_job_seeker.id, room_id: ['room']
+    if current_job_offerer
+      Message.create! content: data['message'], job_offerer_id: current_job_offerer.id, room_id: params['room']
+    elsif current_job_seeker
+      Message.create! content: data['message'], job_seeker_id: current_job_seeker.id, room_id: params['room']
     end
   end
 end
