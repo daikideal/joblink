@@ -10,6 +10,11 @@ class RoomsController < ApplicationController
     @messages = @room.messages
   end
 
+  def create
+    @room = Room.create
+    redirect_to @room
+  end
+
   protected
 
   def authenticate_user!
