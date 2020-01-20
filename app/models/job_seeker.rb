@@ -7,4 +7,5 @@ class JobSeeker < ApplicationRecord
   
   has_one :job_seeker_profile, dependent: :destroy
   has_many :messages, -> { where('job_offerer_id is NULL') }
+  has_many :rooms, through: :entries
 end
