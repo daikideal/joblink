@@ -6,5 +6,5 @@ class JobSeeker < ApplicationRecord
          :confirmable, :lockable, :timeoutable
   
   has_one :job_seeker_profile, dependent: :destroy
-  has_many :messages
+  has_many :messages, -> { where('job_offerer_id is NULL') }
 end
