@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rooms = Room.all.order(updated_at: :desc)
+    @rooms = current_user.rooms.order(updated_at: :desc)
   end
 
   def show
