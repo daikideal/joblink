@@ -6,8 +6,14 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find(params[:id])
-    @messages = @room.messages
+    @entry = Entry.find_by(room_id: params[:id])
+    if current_user.rooms.find_by(id: @entry.room_id)
+      @room = Room.find(params[:id])
+      @messages = @room.messages
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = '権限がありません'
+    end
   end
 
   def create
