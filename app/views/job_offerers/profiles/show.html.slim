@@ -7,7 +7,10 @@
   .col.s2.offset-s2.right
     = link_to '編集', edit_job_offerer_profile_path(@profile), class: 'btn'
     - if job_seeker_signed_in?
-      =< link_to 'メッセージ', rooms_path(entry: {job_seeker_id: current_job_seeker, job_offerer_id: @job_offerer}), method: :post, class: 'btn'
+      - if current_job_seeker.rooms.find_by(id: @job_offerer.rooms)
+        =< link_to 'メッセージ', room_path(current_job_seeker.rooms.find_by(id: @job_offerer.rooms)), class: 'btn'
+      - else
+        =< link_to 'メッセージ', rooms_path(entry: {job_seeker_id: current_job_seeker, job_offerer_id: @job_offerer}), method: :post, class: 'btn'
   .col.s10
     h4
       ruby
