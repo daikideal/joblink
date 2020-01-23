@@ -1,7 +1,8 @@
 h1
   | トークルーム
-#messages data-room_id="#{ @room.id }"
-  = render @messages
-
-= label_tag :content, 'メッセージを送信'
-= text_field_tag :content, nil, data: { behavior: 'room_speaker' }
+table.highlight#messages data-room_id="#{ @room.id }"
+  tbody
+    = render @messages
+.section
+  = label_tag :content, 'メッセージを送信'
+  = text_field_tag :content, nil, data: { behavior: 'room_speaker' }
