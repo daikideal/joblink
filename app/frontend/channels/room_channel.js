@@ -23,10 +23,12 @@ $(function() {
   });
 
   $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
-    if (event.keyCode === 13) {
-      chatChannel.speak(event.target.value);
-      event.target.value = '';
-      return event.preventDefault();
+    if (event.shiftKey){
+      if (event.keyCode === 13) {
+        chatChannel.speak(event.target.value);
+        event.target.value = '';
+        return event.preventDefault();
+      }
     }
   });
 });
