@@ -31,4 +31,10 @@ $(function() {
       }
     }
   });
+
+  $(document).on('click', '#submit', function(event) {
+    chatChannel.speak($('[data-behavior~=room_speaker]').val());
+    $('[data-behavior~=room_speaker]').val('')
+    return event.preventDefault();
+  });
 });
