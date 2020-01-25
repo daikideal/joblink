@@ -1,0 +1,8 @@
+h2
+  | トークルーム一覧
+.section
+  .collection
+    - if job_offerer_signed_in?
+      = render 'job_offerers'
+    - elsif job_seeker_signed_in?
+      = render 'job_seekers'

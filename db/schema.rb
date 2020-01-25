@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_13_062406) do
+ActiveRecord::Schema.define(version: 2020_01_20_060814) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2020_01_13_062406) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "job_offerer_id"
+    t.bigint "job_seeker_id"
+    t.bigint "room_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_offerer_id"], name: "index_entries_on_job_offerer_id"
+    t.index ["job_seeker_id"], name: "index_entries_on_job_seeker_id"
+    t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
   create_table "job_offerer_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -129,8 +140,31 @@ ActiveRecord::Schema.define(version: 2020_01_13_062406) do
     t.index ["unlock_token"], name: "index_job_seekers_on_unlock_token", unique: true
   end
 
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "job_offerer_id"
+    t.bigint "job_seeker_id"
+    t.bigint "room_id", null: false
+    t.index ["job_offerer_id"], name: "index_messages_on_job_offerer_id"
+    t.index ["job_seeker_id"], name: "index_messages_on_job_seeker_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "entries", "job_offerers"
+  add_foreign_key "entries", "job_seekers"
+  add_foreign_key "entries", "rooms"
   add_foreign_key "job_offerer_profiles", "job_offerers", on_delete: :cascade
   add_foreign_key "job_postings", "job_offerers", on_delete: :cascade
   add_foreign_key "job_seeker_profiles", "job_seekers", on_delete: :cascade
+  add_foreign_key "messages", "job_offerers"
+  add_foreign_key "messages", "job_seekers"
+  add_foreign_key "messages", "rooms"
 end

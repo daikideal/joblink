@@ -1,0 +1,14 @@
+h1
+  | トークルーム
+table.highlight#messages data-room_id="#{ @room.id }"
+  tbody
+    = render @messages
+.section#speaker
+  .row
+    = label_tag :content, 'メッセージ'
+    = text_area_tag :content, nil, data: { behavior: 'room_speaker' }, class: 'materialize-textarea'
+  .row
+    .right
+      = button_tag id: 'submit', class: 'btn tooltipped', data: {position: "top", tooltip: "Shift + Enter"}
+        | 送信
+        i.material-icons.right send

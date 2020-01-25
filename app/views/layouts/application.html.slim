@@ -16,4 +16,5 @@ html
       = alert
     .container
       = yield
-    = render 'layouts/footer'
+    - unless controller.controller_name == 'rooms' && controller.action_name == 'show' 
+      = render 'layouts/footer'

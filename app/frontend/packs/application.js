@@ -15,6 +15,7 @@ require("jquery")
 
 require("custom/forms")
 require("custom/navbar")
+require("custom/room")
 require("trix")
 require("@rails/actiontext")
 
