@@ -1,0 +1,2 @@
+module JobSeekers::ResumesHelper
+end
