@@ -9,6 +9,6 @@ table.highlight#messages data-room_id="#{ @room.id }"
     = text_area_tag :content, nil, data: { behavior: 'room_speaker' }, class: 'materialize-textarea'
   .row
     .right
-      = button_tag id: 'submit', class: 'btn'
+      = button_tag id: 'submit', class: 'btn tooltipped', data: {position: "top", tooltip: "Shift + Enter"}
         | 送信
         i.material-icons.right send
