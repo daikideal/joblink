@@ -1,0 +1,11 @@
+h3
+  | 経歴書編集
+= form_with model: @resume, url: job_seeker_resume_path, local: true do |f|
+  = render 'layouts/error_messages', model: f.object
+  .row
+    .input-filed
+      = f.label '本文'
+      = f.text_field :content
+  .row
+    .actions
+      = f.submit '更新', class: 'btn right'
