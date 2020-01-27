@@ -42,11 +42,5 @@ h3
       = f.label '自己紹介'
       = f.text_area :bio, class: 'materialize-textarea'
   .row
-    .col.s12
-      h4
-        | 経歴書
-    .input-field.col.s12
-      = f.rich_text_area :resume
-  .row
     .actions
       = f.submit '更新', class: 'btn right'
