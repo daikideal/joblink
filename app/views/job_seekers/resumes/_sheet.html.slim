@@ -1,0 +1,17 @@
+- if @job_seeker.resume
+  - if correct_user?
+    .row
+      .right
+        = link_to '編集', edit_job_seeker_resume_path(@job_seeker), class: 'btn'
+        =< link_to '削除', job_seeker_resume_path(@job_seeker), class: 'btn', method: :delete, data: {confirm: "経歴書を削除しますか？"}
+  .card
+    .card-content
+      == @job_seeker.resume.content
+- else
+  .card
+    .card-content
+      p 
+        | 経歴書は作成されていません。
+        - if correct_user?
+          .row
+            = link_to '経歴書を作成する', new_job_seeker_resume_path(@job_seeker)
