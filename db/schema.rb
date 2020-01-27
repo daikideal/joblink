@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_060814) do
+ActiveRecord::Schema.define(version: 2020_01_27_072433) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(version: 2020_01_20_060814) do
     t.string "first_name_furigana"
     t.string "last_name_furigana"
     t.text "bio"
-    t.text "resume"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["job_seeker_id"], name: "index_job_seeker_profiles_on_job_seeker_id"
@@ -152,6 +151,14 @@ ActiveRecord::Schema.define(version: 2020_01_20_060814) do
     t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
+  create_table "resumes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "job_seeker_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_seeker_id"], name: "index_resumes_on_job_seeker_id"
+  end
+
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -167,4 +174,5 @@ ActiveRecord::Schema.define(version: 2020_01_20_060814) do
   add_foreign_key "messages", "job_offerers"
   add_foreign_key "messages", "job_seekers"
   add_foreign_key "messages", "rooms"
+  add_foreign_key "resumes", "job_seekers", on_delete: :cascade
 end

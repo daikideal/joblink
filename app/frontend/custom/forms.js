@@ -40,3 +40,8 @@ $(function() {
     readURL(this);
   });
 });
+
+//Resume編集画面のヘルプリストの表示処理
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
