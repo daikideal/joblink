@@ -5,7 +5,7 @@ h3
   .row
     .input-filed
       = f.label '本文'
-      = f.text_field :content
+      = f.rich_text_area :content
   .row
     .actions
       = f.submit '作成', class: 'btn right'
