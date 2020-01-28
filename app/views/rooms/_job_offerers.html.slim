@@ -1,6 +1,6 @@
 - @rooms.each do |room|
   = link_to(room_path(room), class: 'collection-item avatar black-text') do
-    - if room.job_seeker.first
+    - if room.job_seeker.present?
       - if room.job_seeker.first.job_seeker_profile.avatar.attached?
         = image_tag room.job_seeker.first.job_seeker_profile.shaped_avatar, class: 'circle'
       - else 
