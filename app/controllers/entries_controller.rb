@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
     elsif job_seeker_signed_in?
       @entry.update(job_seeker_id: nil)
     end
+    @entry.nobody
     redirect_to rooms_path, notice: 'ルームを退出しました'
   end
 end
