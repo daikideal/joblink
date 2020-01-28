@@ -1,5 +1,15 @@
-h1
-  | トークルーム
+.section
+  = link_to rooms_path, class: 'btn-flat' do
+    i.material-icons chevron_left
+  - if @room.job_offerer.first && @room.job_seeker.first
+    - if job_offerer_signed_in?  
+      = @room.job_seeker.first.job_seeker_profile.full_name
+    - elsif job_seeker_signed_in?
+      = @room.job_offerer.first.job_offerer_profile.full_name
+  - else
+    | 相手が退出しています
+  = link_to room_entry_path(@room), method: :delete, data: {confirm: 'このルームから退出しますか?このルームでの会話は見られなくなります。'}, class: 'btn-flat right' do
+    i.material-icons exit_to_app
 table.highlight#messages data-room_id="#{ @room.id }"
   tbody
     = render @messages
