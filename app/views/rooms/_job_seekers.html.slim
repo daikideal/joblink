@@ -11,9 +11,10 @@
       = image_tag '/default_avatar.png', class: 'circle', size: '200x200'
       span.title
         | 相手が退出しています。
-    p.right
-      = room.messages.last.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
-    p
-      - if room.messages.last.job_seeker == current_job_seeker
-        | あなた: 
-      = room.messages.last.content.truncate(28, omission: '...')
+    - if room.messages.present?
+      p.right
+        = room.messages.last.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
+      p
+        - if room.messages.last.job_seeker == current_job_seeker
+          | あなた: 
+        = room.messages.last.content.truncate(28, omission: '...')
