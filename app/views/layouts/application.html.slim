@@ -9,7 +9,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     link[href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"]
   body
-    -if controller.controller_name == 'rooms' && controller.action_name == 'show'
+    - if room?
       = render 'layouts/room_header'
     - else  
       = render 'layouts/header'
@@ -19,5 +19,5 @@ html
       = alert
     .container
       = yield
-    - unless controller.controller_name == 'rooms' && controller.action_name == 'show' 
+    - unless room?
       = render 'layouts/footer'
