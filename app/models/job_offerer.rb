@@ -5,7 +5,7 @@ class JobOfferer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  has_one :job_offerer_profile, dependent: :destroy
+  has_one :profile, class_name: 'JobOffererProfile', dependent: :destroy
   has_many :job_postings, dependent: :destroy
   has_many :messages, -> { where('job_seeker_id is NULL') }, dependent: :nullify
   has_many :entries, dependent: :nullify
