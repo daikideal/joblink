@@ -10,4 +10,8 @@ class JobOfferer < ApplicationRecord
   has_many :messages, -> { where('job_seeker_id is NULL') }, dependent: :nullify
   has_many :entries, dependent: :nullify
   has_many :rooms, through: :entries
+
+  def leave(entry)
+    entry.update(job_offerer_id: nil)
+  end
 end
