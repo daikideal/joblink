@@ -6,4 +6,9 @@ module ApplicationHelper
       return true if @job_seeker == current_job_seeker
     end
   end
+
+  def room?
+    return true if controller.controller_name == 'rooms' &&
+                   controller.action_name == 'show'
+  end
 end
