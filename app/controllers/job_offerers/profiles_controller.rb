@@ -7,7 +7,7 @@ class JobOfferers::ProfilesController < ApplicationController
 
   def show
     @job_offerer = JobOfferer.find(params[:id])
-    @profile = @job_offerer.job_offerer_profile
+    @profile = @job_offerer.profile
   end
 
   def new
