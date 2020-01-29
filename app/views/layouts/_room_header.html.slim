@@ -6,7 +6,7 @@
           = link_to rooms_path, class: 'btn-flat' do
             i.material-icons.white-text chevron_left
         li
-          - if @room.job_offerer.present? && @room.job_seeker.present?
+          - if both_present?
             - if job_offerer_signed_in?  
               = @room.job_seeker.first.job_seeker_profile.full_name
             - elsif job_seeker_signed_in?
