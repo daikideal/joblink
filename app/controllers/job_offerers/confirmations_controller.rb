@@ -27,7 +27,7 @@ class JobOfferers::ConfirmationsController < Devise::ConfirmationsController
   def after_confirmation_path_for(resource_name, resource)
     # super(resource_name, resource)
     sign_in(resource)
-    if current_job_offerer.job_offerer_profile.blank?
+    if current_job_offerer.profile.blank?
       flash[:notice] = 'メールアドレスが認証されました。続いてプロフィールを登録してください'
       new_job_offerer_profile_path(resource)
     else

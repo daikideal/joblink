@@ -11,11 +11,11 @@ class JobOfferers::ProfilesController < ApplicationController
   end
 
   def new
-    @profile = current_job_offerer.build_job_offerer_profile
+    @profile = current_job_offerer.build_profile
   end
 
   def create
-    @profile = current_job_offerer.build_job_offerer_profile(profile_params)
+    @profile = current_job_offerer.build_profile(profile_params)
     if @profile.save
       redirect_to root_url, notice: 'プロフィール設定が完了しました'
     else
@@ -24,11 +24,11 @@ class JobOfferers::ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = current_job_offerer.job_offerer_profile
+    @profile = current_job_offerer.profile
   end
 
   def update
-    @profile = current_job_offerer.job_offerer_profile
+    @profile = current_job_offerer.profile
     if @profile.update_attributes(profile_params)
       redirect_to current_job_offerer, notice: 'プロフィールの更新に成功しました'
     else
