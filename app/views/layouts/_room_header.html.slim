@@ -8,9 +8,9 @@
         li
           - if both_present?
             - if job_offerer_signed_in?  
-              = @room.job_seeker.first.job_seeker_profile.full_name
+              = @room.job_seeker.first.profile.full_name
             - elsif job_seeker_signed_in?
-              = @room.job_offerer.first.job_offerer_profile.full_name
+              = @room.job_offerer.first.profile.full_name
           - else
             | 相手が退出しています
         li.right

@@ -1,12 +1,12 @@
 - @rooms.each do |room|
   = link_to(room_path(room), class: 'collection-item avatar black-text') do
     - if room.job_seeker.present?
-      - if room.job_seeker.first.job_seeker_profile.avatar.attached?
-        = image_tag room.job_seeker.first.job_seeker_profile.shaped_avatar, class: 'circle'
+      - if room.job_seeker.first.profile.avatar.attached?
+        = image_tag room.job_seeker.first.profile.shaped_avatar, class: 'circle'
       - else 
         = image_tag '/default_avatar.png', class: 'circle', size: '200x200'
       span.title
-        = room.job_seeker.first.job_seeker_profile.full_name
+        = room.job_seeker.first.profile.full_name
     - else 
       = image_tag '/default_avatar.png', class: 'circle', size: '200x200'
       span.title
