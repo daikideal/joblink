@@ -1,0 +1,2 @@
+module JobOfferers::ProfilesHelper
+end
