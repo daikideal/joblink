@@ -24,13 +24,13 @@ class JobSeekers::ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = current_job_seeker.profile
+    @profile = JobSeekerProfile.find(params[:job_seeker_id])
   end
 
   def update
-    @profile = current_job_seeker.profile
+    @profile = JobSeekerProfile.find(params[:job_seeker_id])
     if @profile.update_attributes(profile_params)
-      redirect_to current_job_seeker, notice: 'プロフィールの更新に成功しました'
+      redirect_to @profile.job_seeker, notice: 'プロフィールの更新に成功しました'
     else
       render 'edit', alert: 'プロフィールの更新に失敗しました'
     end
