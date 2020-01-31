@@ -22,19 +22,16 @@ class JobSeekers::ResumesController < ApplicationController
   def update
     @resume = JobSeeker.find(params[:job_seeker_id]).resume
     if @resume.update_attributes(resume_params)
-      redirect_to job_seeker_path(current_job_seeker), notice: '経歴書を更新しました'
+      redirect_to job_seeker_path(@resume.job_seeker), notice: '経歴書を更新しました'
     else
       render 'edit', alert: '経歴書の更新に失敗しました'
     end
   end
 
   def destroy
-    @resume = JobSeeker.find(params[:job_seeker_id]).resume
-    if @resume.destroy
-      redirect_to job_seeker_path(@job_seeker), notice: '経歴書を削除しました。'
-    else
-      redirect_to job_seeker_path(@job_seeker), alert: '経歴書の削除に失敗しました。'
-    end
+    @job_seeker = JobSeeker.find(params[:job_seeker_id])
+    @job_seeker.resume.destroy
+    redirect_to job_seeker_path(@job_seeker), notice: '経歴書を削除しました。'
   end
 
   private
