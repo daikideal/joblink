@@ -45,7 +45,6 @@ class JobSeekers::ProfilesController < ApplicationController
       :first_name_furigana,
       :last_name_furigana,
       :bio,
-      :resume,
       :avatar
     )
   end
