@@ -1,5 +1,8 @@
 class JobOfferers::JobPostingsController < ApplicationController
+  include Common
+
   before_action :authenticate_job_offerer!, except: %i[index show]
+  before_action :require_profile, except: %i[index show]
   before_action :posting_require_correct_user, only: %i[edit update destroy]
 
   def index
