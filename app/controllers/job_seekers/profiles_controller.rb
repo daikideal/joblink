@@ -1,5 +1,8 @@
 class JobSeekers::ProfilesController < ApplicationController
+  include Common
+
   before_action :authenticate_job_seeker!, except: %i[index show]
+  before_action :profile_exists_already, only: %i[new create]
   before_action :profile_require_correct_user, only: %i[edit update]
 
   def index
@@ -12,8 +15,6 @@ class JobSeekers::ProfilesController < ApplicationController
   end
 
   def new
-    return redirect_to root_url, alert: '操作が無効です' unless current_job_seeker.profile.nil?
-
     @profile = current_job_seeker.build_profile
   end
 
@@ -49,13 +50,5 @@ class JobSeekers::ProfilesController < ApplicationController
       :bio,
       :avatar
     )
-  end
-
-  def profile_require_correct_user
-    @profile = JobSeekerProfile.find(params[:job_seeker_id])
-    return unless @profile.present?
-    return unless @profile.job_seeker != current_job_seeker
-
-    redirect_back(fallback_location: root_path, alert: '権限がありません')
   end
 end
