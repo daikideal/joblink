@@ -1,5 +1,6 @@
 class JobOfferers::ProfilesController < ApplicationController
   before_action :authenticate_job_offerer!, except: %i[index show]
+  before_action :profile_require_correct_user, only: %i[edit update]
 
   def index
     @profiles = JobOffererProfile.page(params[:page])
@@ -46,5 +47,13 @@ class JobOfferers::ProfilesController < ApplicationController
       :bio,
       :avatar
     )
+  end
+
+  def profile_require_correct_user
+    @profile = JobOffererProfile.find(params[:job_offerer_id])
+    return unless @profile.present?
+    return unless @profile.job_offerer != current_job_offerer
+
+    redirect_back(fallback_location: root_path, alert: '権限がありません')
   end
 end
