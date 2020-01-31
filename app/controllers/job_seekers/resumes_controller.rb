@@ -1,5 +1,8 @@
 class JobSeekers::ResumesController < ApplicationController
+  include Common
+
   before_action :authenticate_job_seeker!
+  before_action :require_profile
   before_action :resume_require_correct_user
 
   def new
