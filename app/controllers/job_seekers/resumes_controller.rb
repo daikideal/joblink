@@ -1,6 +1,6 @@
 class JobSeekers::ResumesController < ApplicationController
   before_action :authenticate_job_seeker!
-  before_action :correct_job_seeker
+  before_action :resume_require_correct_user
 
   def new
     @resume = current_job_seeker.build_resume
@@ -42,11 +42,10 @@ class JobSeekers::ResumesController < ApplicationController
     )
   end
 
-  def correct_job_seeker
+  def resume_require_correct_user
     @job_seeker = JobSeeker.find(params[:job_seeker_id])
-    return if @job_seeker == current_job_seeker
+    return unless @job_seeker != current_job_seeker
 
-    redirect_back(fallback_location: root_path)
-    flash[:alert] = '権限がありません'
+    redirect_back(fallback_location: root_path, alert: '権限がありません')
   end
 end
