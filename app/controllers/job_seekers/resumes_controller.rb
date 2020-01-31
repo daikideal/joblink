@@ -16,11 +16,11 @@ class JobSeekers::ResumesController < ApplicationController
   end
 
   def edit
-    @resume = current_job_seeker.resume
+    @resume = JobSeeker.find(params[:job_seeker_id]).resume
   end
 
   def update
-    @resume = current_job_seeker.resume
+    @resume = JobSeeker.find(params[:job_seeker_id]).resume
     if @resume.update_attributes(resume_params)
       redirect_to job_seeker_path(current_job_seeker), notice: '経歴書を更新しました'
     else
@@ -29,8 +29,8 @@ class JobSeekers::ResumesController < ApplicationController
   end
 
   def destroy
-    @job_seeker = JobSeeker.find(params[:job_seeker_id])
-    if @job_seeker.resume.destroy
+    @resume = JobSeeker.find(params[:job_seeker_id]).resume
+    if @resume.destroy
       redirect_to job_seeker_path(@job_seeker), notice: '経歴書を削除しました。'
     else
       redirect_to job_seeker_path(@job_seeker), alert: '経歴書の削除に失敗しました。'
