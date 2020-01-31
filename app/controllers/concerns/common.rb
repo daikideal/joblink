@@ -1,6 +1,18 @@
 module Common
   extend ActiveSupport::Concern
 
+  def require_profile
+    return unless current_user.profile.nil?
+
+    if job_offerer_signed_in?
+      redirect_to new_job_offerer_profile_path(current_user)
+      flash[:notice] = 'この機能はプロフィールの設定が必要です'
+    elsif job_seeker_signed_in?
+      redirect_to new_job_seeker_profile_path(current_user)
+      flash[:notice] = 'この機能はプロフィールの設定が必要です'
+    end
+  end
+
   def profile_exists_already
     return redirect_to root_url, alert: '操作が無効です' unless current_user.profile.nil?
   end
