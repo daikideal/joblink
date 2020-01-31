@@ -12,6 +12,8 @@ class JobOfferers::ProfilesController < ApplicationController
   end
 
   def new
+    return redirect_to root_url, alert: '操作が無効です' unless current_job_offerer.profile.nil?
+
     @profile = current_job_offerer.build_profile
   end
 
