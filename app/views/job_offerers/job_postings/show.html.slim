@@ -10,10 +10,11 @@
     p
       == @job_posting.content
 .section
-  .row
-    .right
-      = link_to '編集', edit_job_posting_path, class: 'btn'
-      =< link_to '削除', job_posting_path, data: { confirm: "この求人を削除しますか?" }, method: :delete, class: 'btn'
+  - if @job_posting.job_offerer == current_job_offerer
+    .row
+      .right
+        = link_to '編集', edit_job_posting_path, class: 'btn'
+        =< link_to '削除', job_posting_path, data: { confirm: "この求人を削除しますか?" }, method: :delete, class: 'btn'
   .row
     .right
       = link_to '一覧へ戻る', job_postings_path
