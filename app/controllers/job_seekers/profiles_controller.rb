@@ -28,11 +28,11 @@ class JobSeekers::ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = JobSeekerProfile.find(params[:job_seeker_id])
+    @profile = JobSeekerProfile.find_by(job_seeker_id: params[:job_seeker_id])
   end
 
   def update
-    @profile = JobSeekerProfile.find(params[:job_seeker_id])
+    @profile = JobSeekerProfile.find_by(job_seeker_id: params[:job_seeker_id])
     if @profile.update_attributes(profile_params)
       redirect_to @profile.job_seeker, notice: 'プロフィールの更新に成功しました'
     else

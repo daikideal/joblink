@@ -6,7 +6,7 @@
       = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2.right
     - if correct_user?
-      = link_to '編集', edit_job_offerer_profile_path(@profile), class: 'btn'
+      = link_to '編集', edit_job_offerer_profile_path(@job_offerer), class: 'btn'
     - if job_seeker_signed_in?
       - if current_job_seeker.rooms.find_by(id: @job_offerer.rooms)
         =< link_to 'メッセージ', room_path(current_job_seeker.rooms.find_by(id: @job_offerer.rooms)), class: 'btn'
