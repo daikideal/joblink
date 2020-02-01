@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
+  include Common
+
   before_action :authenticate_user!
+  before_action :require_profile
 
   def index
     @rooms = current_user.rooms.order(updated_at: :desc)
