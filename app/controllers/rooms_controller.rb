@@ -30,9 +30,7 @@ class RoomsController < ApplicationController
   def authenticate_user!
     return if job_offerer_signed_in? || job_seeker_signed_in?
 
-    return authenticate_job_offerer! unless job_offerer_signed_in?
-
-    return authenticate_job_seeker! unless job_seeker_signed_in?
+    redirect_to root_url, alert: 'この機能はログインが必要です'
   end
 
   def entry_params
