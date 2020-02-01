@@ -14,8 +14,7 @@ class RoomsController < ApplicationController
       @room = Room.find(params[:id])
       @messages = @room.messages
     else
-      redirect_back(fallback_location: root_path)
-      flash[:alert] = '権限がありません'
+      redirect_back(fallback_location: root_path, alert: '権限がありません')
     end
   end
 
