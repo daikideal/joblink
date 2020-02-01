@@ -3,7 +3,7 @@ class JobSeekers::ProfilesController < ApplicationController
 
   before_action :authenticate_job_seeker!, except: %i[index show]
   before_action :profile_exists_already, only: %i[new create]
-  before_action :profile_require_correct_user, only: %i[edit update]
+  before_action :require_correct_user, only: %i[edit update]
 
   def index
     @profiles = JobSeekerProfile.page(params[:page])
