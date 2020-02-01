@@ -3,7 +3,7 @@ class JobOfferers::JobPostingsController < ApplicationController
 
   before_action :authenticate_job_offerer!, except: %i[index show]
   before_action :require_profile, except: %i[index show]
-  before_action :posting_require_correct_user, only: %i[edit update destroy]
+  before_action :posting_requires_correct_user, only: %i[edit update destroy]
 
   def index
     @job_postings = JobPosting.order(updated_at: :desc).page(params[:page]).per(5)
@@ -56,7 +56,7 @@ class JobOfferers::JobPostingsController < ApplicationController
     )
   end
 
-  def posting_require_correct_user
+  def posting_requires_correct_user
     @job_posting = JobPosting.find(params[:id])
     return unless @job_posting.job_offerer != current_job_offerer
 
