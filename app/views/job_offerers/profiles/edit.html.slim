@@ -1,6 +1,6 @@
 h3
   | プロフィールの編集
-= form_with model: @profile, local: true do |f|
+= form_with model: @profile, url: job_offerer_profile_path, local: true do |f|
   = render 'layouts/error_messages', model: f.object
   .row.valign-wrapper
     .col.s6
