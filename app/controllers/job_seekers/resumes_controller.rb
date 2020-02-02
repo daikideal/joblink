@@ -1,6 +1,9 @@
 class JobSeekers::ResumesController < ApplicationController
+  include Common
+
   before_action :authenticate_job_seeker!
-  before_action :correct_job_seeker
+  before_action :require_profile
+  before_action :require_correct_user
 
   def new
     @resume = current_job_seeker.build_resume
@@ -16,13 +19,13 @@ class JobSeekers::ResumesController < ApplicationController
   end
 
   def edit
-    @resume = current_job_seeker.resume
+    @resume = JobSeeker.find(params[:job_seeker_id]).resume
   end
 
   def update
-    @resume = current_job_seeker.resume
+    @resume = JobSeeker.find(params[:job_seeker_id]).resume
     if @resume.update_attributes(resume_params)
-      redirect_to job_seeker_path(current_job_seeker), notice: '経歴書を更新しました'
+      redirect_to job_seeker_path(@resume.job_seeker), notice: '経歴書を更新しました'
     else
       render 'edit', alert: '経歴書の更新に失敗しました'
     end
@@ -30,11 +33,8 @@ class JobSeekers::ResumesController < ApplicationController
 
   def destroy
     @job_seeker = JobSeeker.find(params[:job_seeker_id])
-    if @job_seeker.resume.destroy
-      redirect_to job_seeker_path(@job_seeker), notice: '経歴書を削除しました。'
-    else
-      redirect_to job_seeker_path(@job_seeker), alert: '経歴書の削除に失敗しました。'
-    end
+    @job_seeker.resume.destroy
+    redirect_to job_seeker_path(@job_seeker), notice: '経歴書を削除しました。'
   end
 
   private
@@ -43,13 +43,5 @@ class JobSeekers::ResumesController < ApplicationController
     params.require(:resume).permit(
       :content
     )
-  end
-
-  def correct_job_seeker
-    @job_seeker = JobSeeker.find(params[:job_seeker_id])
-    return if @job_seeker == current_job_seeker
-
-    redirect_back(fallback_location: root_path)
-    flash[:alert] = '権限がありません'
   end
 end

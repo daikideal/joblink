@@ -11,7 +11,8 @@ h2
         p
           == job_posting.content
   = paginate @job_postings
-.section
-  .row
-    .right
-      = link_to '求人を投稿する', new_job_posting_path, class: 'btn'
+- if job_offerer_signed_in?
+  .section
+    .row
+      .right
+        = link_to '求人を投稿する', new_job_posting_path, class: 'btn'

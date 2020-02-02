@@ -4,6 +4,10 @@ h1.center-align
   p.center-align
     | こんにちは、
     = current_job_offerer.email
+- elsif job_seeker_signed_in?
+  p.center-align
+    | こんにちは、
+    = current_job_seeker.email
 - else  
   p.center-align
     | ここはJOBLINKのHomeページです

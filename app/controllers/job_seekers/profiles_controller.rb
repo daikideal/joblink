@@ -1,5 +1,9 @@
 class JobSeekers::ProfilesController < ApplicationController
+  include Common
+
   before_action :authenticate_job_seeker!, except: %i[index show]
+  before_action :profile_exists_already, only: %i[new create]
+  before_action :require_correct_user, only: %i[edit update]
 
   def index
     @profiles = JobSeekerProfile.page(params[:page])
@@ -24,13 +28,13 @@ class JobSeekers::ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = current_job_seeker.profile
+    @profile = JobSeekerProfile.find_by(job_seeker_id: params[:job_seeker_id])
   end
 
   def update
-    @profile = current_job_seeker.profile
+    @profile = JobSeekerProfile.find_by(job_seeker_id: params[:job_seeker_id])
     if @profile.update_attributes(profile_params)
-      redirect_to current_job_seeker, notice: 'プロフィールの更新に成功しました'
+      redirect_to @profile.job_seeker, notice: 'プロフィールの更新に成功しました'
     else
       render 'edit', alert: 'プロフィールの更新に失敗しました'
     end
@@ -44,7 +48,6 @@ class JobSeekers::ProfilesController < ApplicationController
       :first_name_furigana,
       :last_name_furigana,
       :bio,
-      :resume,
       :avatar
     )
   end

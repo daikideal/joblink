@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
+  include Common
+
   before_action :authenticate_user!
+  before_action :require_profile
 
   def index
     @rooms = current_user.rooms.order(updated_at: :desc)
@@ -11,8 +14,7 @@ class RoomsController < ApplicationController
       @room = Room.find(params[:id])
       @messages = @room.messages
     else
-      redirect_back(fallback_location: root_path)
-      flash[:alert] = '権限がありません'
+      redirect_back(fallback_location: root_path, alert: '権限がありません')
     end
   end
 
@@ -28,9 +30,7 @@ class RoomsController < ApplicationController
   def authenticate_user!
     return if job_offerer_signed_in? || job_seeker_signed_in?
 
-    return authenticate_job_offerer! unless job_offerer_signed_in?
-
-    return authenticate_job_seeker! unless job_seeker_signed_in?
+    redirect_to root_url, alert: 'この機能はログインが必要です'
   end
 
   def entry_params

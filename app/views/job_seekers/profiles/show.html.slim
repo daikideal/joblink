@@ -5,7 +5,8 @@
     - else
       = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
   .col.s2.offset-s2.right
-    = link_to '編集', edit_job_seeker_profile_path(@profile), class: 'btn'
+    - if correct_user?
+      = link_to '編集', edit_job_seeker_profile_path(@job_seeker), class: 'btn'
     - if job_offerer_signed_in?
       - if current_job_offerer.rooms.find_by(id: @job_seeker.rooms)
         =< link_to 'メッセージ', room_path(current_job_offerer.rooms.find_by(id: @job_seeker.rooms)), class: 'btn'
@@ -25,6 +26,7 @@
 .section
   h4 経歴書
   = render 'job_seekers/resumes/sheet'
-.section
-  .row
-    = link_to 'アカウント設定', edit_job_seeker_registration_path(current_job_seeker)
+- if correct_user?
+  .section
+    .row
+      = link_to 'アカウント設定', edit_job_seeker_registration_path
