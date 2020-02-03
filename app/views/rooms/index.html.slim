@@ -1,5 +1,22 @@
 h2
   | トークルーム一覧
+.row
+  - if job_offerer_signed_in?
+    = search_form_for @q do |f|
+      .container
+        .input-field.col.s10
+          = f.text_field :partner_job_seeker_cont, placeholder: 'キーワードで相手を検索'
+        .input-field.col.s2
+          = button_tag class: 'btn-flat'
+            i.material-icons search
+  - elsif job_seeker_signed_in?
+    = search_form_for @q do |f|
+      .container
+        .input-field.col.s10
+          = f.text_field :partner_job_offerer_cont, placeholder: 'キーワードで相手を検索'
+        .input-field.col.s2
+          = button_tag class: 'btn-flat'
+            i.material-icons search
 .section
   .collection
     - if job_offerer_signed_in?

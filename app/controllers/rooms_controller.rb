@@ -5,7 +5,11 @@ class RoomsController < ApplicationController
   before_action :require_profile
 
   def index
-    @rooms = current_user.rooms.order(updated_at: :desc)
+    @q = current_user.rooms
+                     .includes(:messages, :job_offerer, :job_seeker)
+                     .order('messages.created_at desc')
+                     .ransack(params[:q])
+    @rooms = @q.result(distinct: true).page(params[:page])
   end
 
   def show
