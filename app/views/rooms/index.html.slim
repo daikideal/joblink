@@ -1,4 +1,4 @@
-h2
+h4
   | トークルーム一覧
 .row
   - if job_offerer_signed_in?
@@ -17,6 +17,7 @@ h2
         .input-field.col.s2
           = button_tag class: 'btn-flat'
             i.material-icons search
+.divider
 .section
   .collection
     - if job_offerer_signed_in?
