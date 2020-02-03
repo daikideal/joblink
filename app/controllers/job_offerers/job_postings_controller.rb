@@ -6,7 +6,8 @@ class JobOfferers::JobPostingsController < ApplicationController
   before_action :posting_requires_correct_user, only: %i[edit update destroy]
 
   def index
-    @job_postings = JobPosting.order(updated_at: :desc).page(params[:page]).per(5)
+    @q = JobPosting.ransack(params[:q])
+    @job_postings = @q.result(distinct: true).page(params[:page])
   end
 
   def show
