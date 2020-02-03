@@ -10,6 +10,9 @@ h4
           i.material-icons search
 .divider
 .section
+  .row
+    .right
+      = sort_link(@q,:updated_at, '更新日時')
   .collection
     - @job_postings.each do |job_posting|
       = link_to(job_posting_path(job_posting), class: 'collection-item black-text') do
