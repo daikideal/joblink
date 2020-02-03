@@ -13,8 +13,8 @@
         | 相手が退出しています。
     - if room.messages.present?
       p.right
-        = room.messages.last.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
+        = room.messages.first.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
       p
-        - if room.messages.last.job_offerer == current_job_offerer
+        - if room.messages.first.job_offerer == current_job_offerer
           | あなた: 
-        = room.messages.last.content.truncate(28, omission: '...')
+        = room.messages.first.content.truncate(28, omission: '...')

@@ -1,6 +1,18 @@
-h2
-  | 求人一覧
+h4
+  | 求人
+.row
+  = search_form_for @q do |f|
+    .container
+      .input-field.col.s10
+        = f.text_field :title_cont, placeholder: 'キーワードで求人を検索'
+      .input-field.col.s2
+        = button_tag class: 'btn-flat'
+          i.material-icons search
+.divider
 .section
+  .row
+    .right
+      = sort_link(@q,:updated_at, '更新日時')
   .collection
     - @job_postings.each do |job_posting|
       = link_to(job_posting_path(job_posting), class: 'collection-item black-text') do
