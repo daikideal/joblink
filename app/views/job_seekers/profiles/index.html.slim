@@ -1,5 +1,14 @@
 h2
   | 求職者
+.row
+  = search_form_for @q, url: job_seekers_path do |f|
+    .container
+      .input-field.col.s10
+        = f.search_field :profile_cont, placeholder: 'キーワードで求職者を検索'
+      .input-field.col.s2
+        = button_tag class: 'btn-flat'
+          i.material-icons search
+.divider
 .section
   .collection
     - @profiles.each do |profile|

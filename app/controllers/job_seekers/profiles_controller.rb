@@ -6,7 +6,8 @@ class JobSeekers::ProfilesController < ApplicationController
   before_action :require_correct_user, only: %i[edit update]
 
   def index
-    @profiles = JobSeekerProfile.page(params[:page])
+    @q = JobSeekerProfile.ransack(params[:q])
+    @profiles = @q.result(distinct: true).page(params[:page])
   end
 
   def show
