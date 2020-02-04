@@ -11,8 +11,15 @@ h4
 .divider
 .section
   .row
-    .right
-      = sort_link(@q,:updated_at, '更新日時')
+    - if params[:q].present? && params[:q][:title_cont].present?
+      = params[:q][:title_cont]
+      |  の検索結果:
+    - elsif params[:tag_name].present?
+      = params[:tag_name]
+      |  の検索結果:
+    - unless params[:tag_name].present?
+      .right
+        = sort_link(@q,:updated_at, '更新日時')
   table.highlight
     tbody
       - @job_postings.each do |job_posting|
