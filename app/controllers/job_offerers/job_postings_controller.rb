@@ -7,7 +7,11 @@ class JobOfferers::JobPostingsController < ApplicationController
 
   def index
     @q = JobPosting.ransack(params[:q])
-    @job_postings = @q.result(distinct: true).page(params[:page])
+    @job_postings = if params[:tag_name]
+                      JobPosting.tagged_with(params[:tag_name].to_s).page(params[:page])
+                    else
+                      @q.result(distinct: true).page(params[:page])
+                    end
   end
 
   def show
