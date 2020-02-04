@@ -53,7 +53,8 @@ class JobOfferers::JobPostingsController < ApplicationController
     params.require(:job_posting).permit(
       :header,
       :title,
-      :content
+      :content,
+      :tag_list
     )
   end
 
