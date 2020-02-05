@@ -1,6 +1,10 @@
 module Common
   extend ActiveSupport::Concern
 
+  def popular_tags
+    @tags = ActsAsTaggableOn::Tag.most_used(12)
+  end
+
   def require_profile
     return unless current_user.profile.nil?
 
