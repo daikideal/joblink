@@ -19,9 +19,6 @@ h4
       |  の検索結果:
     - else
       | 全件表示:
-    - unless params[:tag_name].present?
-      .right
-        = sort_link(@q,:updated_at, '更新日時')
   table.highlight
     tbody
       - @job_postings.each do |job_posting|
