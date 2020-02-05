@@ -17,6 +17,8 @@ h4
     - elsif params[:tag_name].present?
       = params[:tag_name]
       |  の検索結果:
+    - else
+      | 全件表示:
     - unless params[:tag_name].present?
       .right
         = sort_link(@q,:updated_at, '更新日時')
