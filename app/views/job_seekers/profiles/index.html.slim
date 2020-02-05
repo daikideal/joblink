@@ -15,15 +15,7 @@ h4
       = link_to tag, job_seekers_path(tag_name: tag.name), class: 'chip'
 .divider
 .section
-  .row
-    - if params[:q].present? && params[:q][:profile_cont].present?
-      = params[:q][:profile_cont]
-      |  の検索結果:
-    - elsif params[:tag_name].present?
-      = params[:tag_name]
-      |  の検索結果:
-    - else
-      | 全件表示:
+  = render 'shared/user_criteria'
   .collection
     - @profiles.each do |profile|
       = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
