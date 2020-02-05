@@ -35,7 +35,8 @@ h4
               h5
                 = job_posting.title
               - job_posting.tag_list.each do |tag|
-                = link_to tag, job_postings_path(tag_name: tag), class: 'chip'
+                span.chip
+                  = tag
   = paginate @job_postings
 - if job_offerer_signed_in?
   .section
