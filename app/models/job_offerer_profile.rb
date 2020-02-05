@@ -7,6 +7,8 @@ class JobOffererProfile < ApplicationRecord
             :first_name_furigana, :last_name_furigana,
             presence: true
 
+  acts_as_taggable
+
   def full_name
     last_name + ' ' + first_name
   end

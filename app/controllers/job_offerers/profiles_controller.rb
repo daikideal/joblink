@@ -6,8 +6,16 @@ class JobOfferers::ProfilesController < ApplicationController
   before_action :require_correct_user, only: %i[edit update]
 
   def index
+    # @q = JobOffererProfile.ransack(params[:q])
+    # @profiles = @q.result(distinct: true).page(params[:page])
+    popular_tags
     @q = JobOffererProfile.ransack(params[:q])
-    @profiles = @q.result(distinct: true).page(params[:page])
+    @profiles = if params[:tag_name]
+                  JobOffererProfile.tagged_with(params[:tag_name].to_s)
+                                  .page(params[:page])
+                else
+                  @q.result(distinct: true).page(params[:page])
+                end
   end
 
   def show
@@ -49,7 +57,8 @@ class JobOfferers::ProfilesController < ApplicationController
       :first_name_furigana,
       :last_name_furigana,
       :bio,
-      :avatar
+      :avatar,
+      :tag_list
     )
   end
 end

@@ -19,4 +19,7 @@ h4
              = profile.full_name
           p
              = profile.bio
+          - profile.tag_list.each do |tag|
+            span.chip
+              = tag
   = paginate @profiles
