@@ -6,6 +6,7 @@ class JobSeekers::ProfilesController < ApplicationController
   before_action :require_correct_user, only: %i[edit update]
 
   def index
+    @tags = ActsAsTaggableOn::Tag.most_used(12)
     @q = JobSeekerProfile.ransack(params[:q])
     @profiles = if params[:tag_name]
                   JobSeekerProfile.tagged_with(params[:tag_name].to_s)
