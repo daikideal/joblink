@@ -6,6 +6,7 @@ class JobOfferers::JobPostingsController < ApplicationController
   before_action :posting_requires_correct_user, only: %i[edit update destroy]
 
   def index
+    @tags = ActsAsTaggableOn::Tag.most_used(12)
     @q = JobPosting.ransack(params[:q])
     @job_postings = if params[:tag_name]
                       JobPosting.tagged_with(params[:tag_name].to_s).page(params[:page])
