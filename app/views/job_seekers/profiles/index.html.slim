@@ -12,11 +12,14 @@ h4
 .section
   .collection
     - @profiles.each do |profile|
-       = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
+      = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
         - if profile.avatar.attached?
           = image_tag profile.shaped_avatar, class: 'circle'
-          span.title
-             = profile.full_name
-          p
-             = profile.bio
+        span.title
+          = profile.full_name
+        p
+          = profile.bio
+        - profile.tag_list.each do |tag|
+          span.chip
+            = tag
   = paginate @profiles
