@@ -6,8 +6,8 @@ class JobSeekers::ProfilesController < ApplicationController
   before_action :require_correct_user, only: %i[edit update]
 
   def index
-    @q = JobSeekerProfile.ransack(params[:q])
-    @profiles = @q.result(distinct: true).page(params[:page])
+    popular_tags
+    @profiles = searched(JobSeekerProfile).page(params[:page])
   end
 
   def show
@@ -49,7 +49,8 @@ class JobSeekers::ProfilesController < ApplicationController
       :first_name_furigana,
       :last_name_furigana,
       :bio,
-      :avatar
+      :avatar,
+      :tag_list
     )
   end
 end

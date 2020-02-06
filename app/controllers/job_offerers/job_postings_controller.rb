@@ -6,8 +6,8 @@ class JobOfferers::JobPostingsController < ApplicationController
   before_action :posting_requires_correct_user, only: %i[edit update destroy]
 
   def index
-    @q = JobPosting.ransack(params[:q])
-    @job_postings = @q.result(distinct: true).page(params[:page])
+    popular_tags
+    @job_postings = searched_postings.page(params[:page])
   end
 
   def show
@@ -53,7 +53,8 @@ class JobOfferers::JobPostingsController < ApplicationController
     params.require(:job_posting).permit(
       :header,
       :title,
-      :content
+      :content,
+      :tag_list
     )
   end
 
@@ -62,5 +63,14 @@ class JobOfferers::JobPostingsController < ApplicationController
     return unless @job_posting.job_offerer != current_job_offerer
 
     redirect_back(fallback_location: root_path, alert: '権限がありません')
+  end
+
+  def searched_postings
+    @q = JobPosting.ransack(params[:q])
+    if params[:tag_name]
+      JobPosting.tagged_with(params[:tag_name].to_s).recently
+    else
+      @q.result(distinct: true).recently
+    end
   end
 end

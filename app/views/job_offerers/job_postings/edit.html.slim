@@ -20,6 +20,12 @@ h3
       = f.label 'タイトル'
       = f.text_field :title
   .row
+    .input-field 
+      = f.label 'タグ'
+      = f.text_field :tag_list, value: @job_posting.tag_list.join(',' + ' ')
+      span.helper-text
+        | *コンマまたはスペース区切りで複数入力可能
+  .row
     .input-field
       = f.label '本文'
       = f.rich_text_area :content

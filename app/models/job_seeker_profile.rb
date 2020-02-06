@@ -7,6 +7,10 @@ class JobSeekerProfile < ApplicationRecord
             :first_name_furigana, :last_name_furigana,
             presence: true
 
+  acts_as_taggable
+
+  scope :active, -> { includes(:job_seeker).order('job_seekers.current_sign_in_at desc') }
+
   def full_name
     last_name + ' ' + first_name
   end

@@ -19,8 +19,32 @@ h4
             i.material-icons search
 .divider
 .section
-  .collection
+  .row
     - if job_offerer_signed_in?
-      = render 'job_offerers'
+      - if params[:q].present? && params[:q][:partner_job_seeker_cont].present?
+        = params[:q][:partner_job_seeker_cont]
+        |  の検索結果:
+      - elsif params[:tag_name].present?
+        = params[:tag_name]
+        |  の検索結果:
+      - else
+        | 全件表示:
     - elsif job_seeker_signed_in?
-      = render 'job_seekers'
+      - if params[:q].present? && params[:q][:partner_job_offerer_cont].present?
+        = params[:q][:partner_job_offerer_cont]
+        |  の検索結果:
+      - elsif params[:tag_name].present?
+        = params[:tag_name]
+        |  の検索結果:
+      - else
+        | 全件表示:
+  - if @rooms.present?
+    - if job_offerer_signed_in?
+      = render 'now_talkings', user: 'job_offerer', partner: 'job_seeker'
+    - elsif job_seeker_signed_in?
+      = render 'now_talkings', user: 'job_seeker', partner: 'job_offerer'
+  - else
+    .row
+      p 
+        | トーク中の相手が見つかりませんでした。
+        br 検索条件を変えるか、新しくメッセージを送りましょう。

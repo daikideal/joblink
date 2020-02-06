@@ -7,6 +7,9 @@
     h3
       = @job_posting.title
   .row
+    - @job_posting.tag_list.each do |tag|
+      = link_to tag, job_postings_path(tag_name: tag), class: 'chip'
+  .row
     p
       == @job_posting.content
 .section

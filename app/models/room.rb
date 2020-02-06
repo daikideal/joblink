@@ -7,4 +7,9 @@ class Room < ApplicationRecord
                 :job_seeker_profile_first_name_or_job_seeker_profile_last_name
   ransack_alias :partner_job_offerer,
                 :job_offerer_profile_first_name_or_job_offerer_profile_last_name
+
+  scope :active, lambda {
+    includes(:messages, :job_offerer, :job_seeker)
+      .order('messages.created_at desc')
+  }
 end

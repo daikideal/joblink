@@ -8,15 +8,28 @@ h4
       .input-field.col.s2
         = button_tag class: 'btn-flat'
           i.material-icons search
+.row
+  .container
+    | 人気のタグ: 
+    - @tags.each do |tag|
+      = link_to tag, job_seekers_path(tag_name: tag.name), class: 'chip'
 .divider
 .section
-  .collection
-    - @profiles.each do |profile|
-       = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
-        - if profile.avatar.attached?
-          = image_tag profile.shaped_avatar, class: 'circle'
+  = render 'shared/user_criteria'
+  - if @profiles.present?
+    .collection
+      - @profiles.each do |profile|
+        = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
+          - if profile.avatar.attached?
+            = image_tag profile.shaped_avatar, class: 'circle'
           span.title
-             = profile.full_name
+            = profile.full_name
           p
-             = profile.bio
+            = profile.bio
+          - profile.tag_list.each do |tag|
+            span.chip
+              = tag
+  - else
+    .row
+      p お探しの条件に該当する結果が見つかりませんでした。
   = paginate @profiles

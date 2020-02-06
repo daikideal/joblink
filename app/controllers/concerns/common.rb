@@ -1,6 +1,10 @@
 module Common
   extend ActiveSupport::Concern
 
+  def popular_tags
+    @tags = ActsAsTaggableOn::Tag.most_used(12)
+  end
+
   def require_profile
     return unless current_user.profile.nil?
 
@@ -28,6 +32,15 @@ module Common
       return unless @job_seeker != current_job_seeker
 
       redirect_back(fallback_location: root_path, alert: '権限がありません')
+    end
+  end
+
+  def searched(profile)
+    @q = profile.ransack(params[:q])
+    if params[:tag_name]
+      profile.tagged_with(params[:tag_name].to_s).active
+    else
+      @q.result(distinct: true).active
     end
   end
 end
