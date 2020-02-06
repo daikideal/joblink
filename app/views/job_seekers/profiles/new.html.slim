@@ -45,6 +45,8 @@ h3
     .input-field.col.s12
       = f.label 'タグ'
       = f.text_field :tag_list, value: @profile.tag_list.join(',' + ' ')
+      span.helper-text
+        | *コンマまたはスペース区切りで複数入力可能
   .row
     .actions
       = f.submit '更新', class: 'btn right'

@@ -17,9 +17,11 @@ h3
       = f.label 'タイトル'
       = f.text_field :title
   .row
-    .inputy-field 
+    .input-field 
       = f.label 'タグ'
       = f.text_field :tag_list, value: @job_posting.tag_list.join(',' + ' ')
+      span.helper-text
+        | *コンマまたはスペース区切りで複数入力可能
   .row
     .field
       = f.label '本文'
