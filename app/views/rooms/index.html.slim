@@ -39,11 +39,10 @@ h4
       - else
         | 全件表示:
   - if @rooms.present?
-    .collection
-      - if job_offerer_signed_in?
-        = render 'job_offerers'
-      - elsif job_seeker_signed_in?
-        = render 'job_seekers'
+    - if job_offerer_signed_in?
+      = render 'now_talkings', user: 'job_offerer', partner: 'job_seeker'
+    - elsif job_seeker_signed_in?
+      = render 'now_talkings', user: 'job_seeker', partner: 'job_offerer'
   - else
     .row
       p 
