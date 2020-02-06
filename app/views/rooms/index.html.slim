@@ -19,8 +19,14 @@ h4
             i.material-icons search
 .divider
 .section
-  .collection
-    - if job_offerer_signed_in?
-      = render 'job_offerers'
-    - elsif job_seeker_signed_in?
-      = render 'job_seekers'
+  - if @rooms.present?
+    .collection
+      - if job_offerer_signed_in?
+        = render 'job_offerers'
+      - elsif job_seeker_signed_in?
+        = render 'job_seekers'
+  - else
+    .row
+      p 
+        | トーク中の相手が見つかりませんでした。
+        br 検索条件を変えるか、新しくメッセージを送りましょう。
