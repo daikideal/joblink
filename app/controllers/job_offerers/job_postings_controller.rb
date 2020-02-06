@@ -7,12 +7,7 @@ class JobOfferers::JobPostingsController < ApplicationController
 
   def index
     popular_tags
-    @q = JobPosting.ransack(params[:q])
-    @job_postings = if params[:tag_name]
-                      JobPosting.tagged_with(params[:tag_name].to_s).recently.page(params[:page])
-                    else
-                      @q.result(distinct: true).recently.page(params[:page])
-                    end
+    @job_postings = searched_postings.page(params[:page])
   end
 
   def show
@@ -68,5 +63,14 @@ class JobOfferers::JobPostingsController < ApplicationController
     return unless @job_posting.job_offerer != current_job_offerer
 
     redirect_back(fallback_location: root_path, alert: '権限がありません')
+  end
+
+  def searched_postings
+    @q = JobPosting.ransack(params[:q])
+    if params[:tag_name]
+      JobPosting.tagged_with(params[:tag_name].to_s).recently
+    else
+      @q.result(distinct: true).recently
+    end
   end
 end
