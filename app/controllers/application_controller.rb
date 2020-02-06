@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   def current_user
-    return current_job_offerer if job_offerer_signed_in?
-    return current_job_seeker if job_seeker_signed_in?
+    if job_offerer_signed_in?
+      current_job_offerer
+    elsif job_seeker_signed_in?
+      current_job_seeker
+    end
   end
 end
