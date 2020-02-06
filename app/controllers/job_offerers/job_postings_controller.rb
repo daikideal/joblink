@@ -9,9 +9,9 @@ class JobOfferers::JobPostingsController < ApplicationController
     popular_tags
     @q = JobPosting.ransack(params[:q])
     @job_postings = if params[:tag_name]
-                      JobPosting.tagged_with(params[:tag_name].to_s).page(params[:page])
+                      JobPosting.tagged_with(params[:tag_name].to_s).recently.page(params[:page])
                     else
-                      @q.result(distinct: true).page(params[:page])
+                      @q.result(distinct: true).recently.page(params[:page])
                     end
   end
 

@@ -5,6 +5,8 @@ class JobPosting < ApplicationRecord
 
   acts_as_taggable
 
+  scope :recently, -> { order(updated_at: :desc) }
+
   def shaped_header
     header.variant(resize_to_fill: [1000, 500]).processed
   end
