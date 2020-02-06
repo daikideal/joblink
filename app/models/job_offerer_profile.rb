@@ -9,6 +9,8 @@ class JobOffererProfile < ApplicationRecord
 
   acts_as_taggable
 
+  scope :active, -> { includes(:job_offerer).order('job_offerers.current_sign_in_at desc') }
+
   def full_name
     last_name + ' ' + first_name
   end
