@@ -11,4 +11,7 @@ ja:
         last_name: 姓
         first_name_furigana: 名(ふりがな)
         last_name_furigana: 姓(ふりがな)
+  views:
+    pagination:
+      truncate: ...
         
