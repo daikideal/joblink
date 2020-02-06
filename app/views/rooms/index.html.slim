@@ -19,6 +19,25 @@ h4
             i.material-icons search
 .divider
 .section
+  .row
+    - if job_offerer_signed_in?
+      - if params[:q].present? && params[:q][:partner_job_seeker_cont].present?
+        = params[:q][:partner_job_seeker_cont]
+        |  の検索結果:
+      - elsif params[:tag_name].present?
+        = params[:tag_name]
+        |  の検索結果:
+      - else
+        | 全件表示:
+    - elsif job_seeker_signed_in?
+      - if params[:q].present? && params[:q][:partner_job_offerer_cont].present?
+        = params[:q][:partner_job_offerer_cont]
+        |  の検索結果:
+      - elsif params[:tag_name].present?
+        = params[:tag_name]
+        |  の検索結果:
+      - else
+        | 全件表示:
   - if @rooms.present?
     .collection
       - if job_offerer_signed_in?
