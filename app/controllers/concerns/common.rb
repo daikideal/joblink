@@ -34,4 +34,13 @@ module Common
       redirect_back(fallback_location: root_path, alert: '権限がありません')
     end
   end
+
+  def searched(profile)
+    @q = profile.ransack(params[:q])
+    if params[:tag_name]
+      profile.tagged_with(params[:tag_name].to_s).active.page(params[:page])
+    else
+      @q.result(distinct: true).active.page(params[:page])
+    end
+  end
 end
