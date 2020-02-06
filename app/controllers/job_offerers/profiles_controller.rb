@@ -7,13 +7,7 @@ class JobOfferers::ProfilesController < ApplicationController
 
   def index
     popular_tags
-    @q = JobOffererProfile.ransack(params[:q])
-    @profiles = if params[:tag_name]
-                  JobOffererProfile.tagged_with(params[:tag_name].to_s)
-                                  .page(params[:page])
-                else
-                  @q.result(distinct: true).page(params[:page])
-                end
+    @profiles = searched(JobOffererProfile)
   end
 
   def show
