@@ -22,7 +22,7 @@ h3
   .row
     .inputy-field 
       = f.label 'タグ'
-      = f.text_field :tag_list, value: @job_posting.tag_list.join(',')
+      = f.text_field :tag_list, value: @job_posting.tag_list.join(',' + ' ')
   .row
     .input-field
       = f.label '本文'

@@ -44,7 +44,7 @@ h3
   .row
     .input-field.col.s12
       = f.label 'タグ'
-      = f.text_field :tag_list, value: @profile.tag_list.join(',')
+      = f.text_field :tag_list, value: @profile.tag_list.join(',' + ' ')
   .row
     .actions
       = f.submit '更新', class: 'btn right'
