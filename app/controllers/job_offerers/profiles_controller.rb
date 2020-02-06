@@ -7,7 +7,7 @@ class JobOfferers::ProfilesController < ApplicationController
 
   def index
     popular_tags
-    @profiles = searched(JobOffererProfile)
+    @profiles = searched(JobOffererProfile).page(params[:page])
   end
 
   def show

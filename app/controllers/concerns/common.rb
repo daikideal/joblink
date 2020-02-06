@@ -38,9 +38,9 @@ module Common
   def searched(profile)
     @q = profile.ransack(params[:q])
     if params[:tag_name]
-      profile.tagged_with(params[:tag_name].to_s).active.page(params[:page])
+      profile.tagged_with(params[:tag_name].to_s).active
     else
-      @q.result(distinct: true).active.page(params[:page])
+      @q.result(distinct: true).active
     end
   end
 end
