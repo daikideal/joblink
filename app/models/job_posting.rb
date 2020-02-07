@@ -1,5 +1,7 @@
 class JobPosting < ApplicationRecord
   belongs_to :job_offerer
+  has_many :bookmarks, dependent: :destroy
+  has_many :job_seekers, through: :bookmarks
   has_one_attached :header
   has_rich_text :content
 
