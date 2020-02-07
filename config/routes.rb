@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   end
 
   resources :job_postings do
-    resource :bookmarks, only: %i[create destroy]
+    resources :bookmarks, only: %i[create destroy]
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
