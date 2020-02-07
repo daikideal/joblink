@@ -9,6 +9,10 @@ class JobPosting < ApplicationRecord
 
   scope :recently, -> { order(updated_at: :desc) }
 
+  def bookmarked_by(job_seeker)
+    bookmarks.find_by(job_seeker_id: job_seeker)
+  end
+
   def shaped_header
     header.variant(resize_to_fill: [1000, 500]).processed
   end
