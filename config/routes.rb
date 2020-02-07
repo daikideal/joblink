@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     resources :job_offerers, only: %i[index show], controller: :profiles do
       resource :profile, except: %i[show destroy]
     end
-    resources :job_postings
   end
 
   devise_for :job_seekers, controllers: {
@@ -41,7 +40,9 @@ Rails.application.routes.draw do
     resources :entries, only: :destroy
   end
 
-  resources :bookmarks, only: %i[create destroy]
+  resources :job_postings do
+    resource :bookmarks, only: %i[create destroy]
+  end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
