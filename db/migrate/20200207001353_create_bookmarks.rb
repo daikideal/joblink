@@ -6,8 +6,5 @@ class CreateBookmarks < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-
-    add_index :bookmarks, :job_seeker_id
-    add_index :bookmarks, :job_posting_id
   end
 end
