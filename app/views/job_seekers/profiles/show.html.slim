@@ -37,7 +37,12 @@
     .section
       = render 'job_seekers/resumes/sheet'
   #bookmark.col.s12
-    = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
+    - if @job_seeker.bookmarks.present?  
+      = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
+    - else
+      .section
+        p 求人をブックマークしていません。
+        = link_to '求人を探す', job_postings_path
 - if correct_user?
   .section
     .row
