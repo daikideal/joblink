@@ -30,13 +30,13 @@
   .col.s12
     ul.tabs
       li.tab.col.s6
-        = link_to '経歴書', "#tab1"
+        = link_to '経歴書', "#resume"
       li.tab.col.s6
-        = link_to 'ブックマーク', "#tab2"
-  #tab1.col.s12
+        = link_to 'ブックマーク', "#bookmark"
+  #resume.col.s12
     .section
       = render 'job_seekers/resumes/sheet'
-  #tab2.col.s12
+  #bookmark.col.s12
     = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
 - if correct_user?
   .section
