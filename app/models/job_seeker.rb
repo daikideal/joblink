@@ -13,6 +13,10 @@ class JobSeeker < ApplicationRecord
   has_many :entries, dependent: :nullify
   has_many :rooms, through: :entries
 
+  def bookmarks
+    job_postings.includes(:bookmarks).order('bookmarks.created_at desc')
+  end
+
   def leave(entry)
     entry.update(job_seeker_id: nil)
   end
