@@ -37,6 +37,7 @@
     .section
       = render 'job_seekers/resumes/sheet'
   #tab2.col.s12
+    = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
 - if correct_user?
   .section
     .row
