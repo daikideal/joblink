@@ -6,6 +6,14 @@
   .row
     h3
       = @job_posting.title
+  .row.valign-wrapper
+    .col.s10
+      | by 
+      = @job_posting.job_offerer.profile.full_name
+    .col.s2
+      .right
+        - if job_seeker_signed_in?
+          = render 'bookmarks/bookmark', job_posting: @job_posting
   .row
     - @job_posting.tag_list.each do |tag|
       = link_to tag, job_postings_path(tag_name: tag), class: 'chip'
