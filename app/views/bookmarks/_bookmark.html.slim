@@ -1,6 +1,11 @@
 - if job_posting.bookmarked_by(current_job_seeker)
   = link_to(job_posting_bookmark_path(job_posting), method: :delete, id: "bookmark_button_#{job_posting.id}", remote: true) do
     i.medium.material-icons bookmark
-- else
+- elsif job_seeker_signed_in?
   = link_to(job_posting_bookmark_path(job_posting), method: :post, id: "bookmark_button_#{job_posting.id}", remote: true) do
+    i.medium.material-icons bookmark_border
+- elsif job_offerer_signed_in?
+  i.medium.material-icons.tooltiped bookmark_border
+- else
+  = link_to(job_posting_bookmark_path(job_posting), method: :post, id: "bookmark_button_#{job_posting.id}") do
     i.medium.material-icons bookmark_border
