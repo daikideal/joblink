@@ -19,6 +19,8 @@
           = @profile.full_name
         rt
           = @profile.full_name_furigana
+      - if correct_user? && @job_seeker.admin?
+        i.material-icons check_circle
     p
       = @profile.job_seeker.email
   blockquote
