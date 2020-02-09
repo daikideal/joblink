@@ -26,9 +26,23 @@
   .row
     - @profile.tag_list.each do |tag|
       = link_to tag, job_seekers_path(tag_name: tag), class: 'chip'
-.section
-  h4 経歴書
-  = render 'job_seekers/resumes/sheet'
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s6
+        = link_to '経歴書', "#resume"
+      li.tab.col.s6
+        = link_to 'ブックマーク', "#bookmark"
+  #resume.col.s12
+    .section
+      = render 'job_seekers/resumes/sheet'
+  #bookmark.col.s12
+    - if @job_seeker.bookmarks.present?  
+      = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
+    - else
+      .section
+        p 求人をブックマークしていません。
+        = link_to '求人を探す', job_postings_path
 - if correct_user?
   .section
     .row

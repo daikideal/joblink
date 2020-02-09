@@ -25,19 +25,7 @@ h4
     - else
       | 全件表示:
   - if @job_postings.present?
-    table.highlight
-      tbody
-        - @job_postings.each do |job_posting|
-          tr
-            td
-              = link_to(job_posting_path(job_posting), class: 'collection-item black-text') do
-                - if job_posting.header.attached?
-                  = image_tag job_posting.thumbnail, class: 'responsive-img'
-                h5
-                  = job_posting.title
-                - job_posting.tag_list.each do |tag|
-                  span.chip
-                    = tag
+    = render 'list', job_postings: @job_postings
   - else
     .row
       p お探しの条件に該当する結果が見つかりませんでした。

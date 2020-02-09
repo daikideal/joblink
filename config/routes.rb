@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     resources :job_offerers, only: %i[index show], controller: :profiles do
       resource :profile, except: %i[show destroy]
     end
-    resources :job_postings
   end
 
   devise_for :job_seekers, controllers: {
@@ -39,6 +38,10 @@ Rails.application.routes.draw do
 
   resources :rooms, only: %i[index show create] do
     resources :entries, only: :destroy
+  end
+
+  resources :job_postings do
+    resource :bookmark, only: %i[create destroy]
   end
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

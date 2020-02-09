@@ -1,4 +1,4 @@
-class JobOfferers::JobPostingsController < ApplicationController
+class JobPostingsController < ApplicationController
   include Common
 
   before_action :authenticate_job_offerer!, except: %i[index show]
