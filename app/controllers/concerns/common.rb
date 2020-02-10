@@ -5,6 +5,12 @@ module Common
     @tags = ActsAsTaggableOn::Tag.most_used(12)
   end
 
+  def require_admin
+    return unless current_user.admin == false
+
+    redirect_back(fallback_location: root_path, alert: '権限がありません')
+  end
+
   def require_profile
     return unless current_user.profile.nil?
 
