@@ -37,18 +37,19 @@
     .row
       .actions
         = f.submit "更新", class: 'btn right'
-.divider
-.section
-  h3
-    | アカウントを削除する
-  .row
-    p
-      | サービスが気に入りませんでしたか？
-      br
-      | 以下のリンクからアカウントを削除できます。
-  .row
-    = link_to "退会する", job_offerer_registration_path, data: { confirm: "本当に退会しますか?" }, method: :delete
-    p
-      | *削除したアカウントは完全に復元できなくなります
-  .row  
-    = link_to "戻る", :back, class: 'btn right'
+- unless current_user.admin?
+  .divider
+  .section
+    h3
+      | アカウントを削除する
+    .row
+      p
+        | サービスが気に入りませんでしたか？
+        br
+        | 以下のリンクからアカウントを削除できます。
+    .row
+      = link_to "退会する", job_offerer_registration_path, data: { confirm: "本当に退会しますか?" }, method: :delete
+      p
+        | *削除したアカウントは完全に復元できなくなります
+    .row  
+      = link_to "戻る", :back, class: 'btn right'
