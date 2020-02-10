@@ -6,16 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 admin = JobOfferer.create!(
-  email: ENV['ADMIN_EMAIL'],
-  password: ENV['ADMIN_PASSWORD'],
-  confirmed_at: Time.now,
-  admin: true
+  email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'],
+  confirmed_at: Time.now, admin: true
 )
 admin.create_profile!(
-  first_name: '大暉',
-  last_name: '上窪',
-  first_name_furigana: 'だいき',
-  last_name_furigana: 'うえくぼ',
+  first_name: ENV['ADMIN_FIRST_NAME'], last_name: ENV['ADMIN_LAST_NAME'],
+  first_name_furigana: ENV['ADMIN_FIRST_NAME_FURIGANA'],
+  last_name_furigana: ENV['ADMIN_LAST_NAME_FURIGANA'],
   bio: 'ご利用ありがとうございます。'
 )
 
