@@ -41,6 +41,12 @@ class JobSeekers::ProfilesController < ApplicationController
     end
   end
 
+  def destroy
+    @job_seeker = JobSeeker.find(params[:id])
+    @job_seeker.destroy
+    redirect_to job_seekers_path, notice: '求職者を削除しました。'
+  end
+
   private
 
   def profile_params

@@ -32,3 +32,7 @@
   .section
     .row
       = link_to 'アカウント設定', edit_job_offerer_registration_path
+- if user_signed_in?
+  - if current_user.admin? && @job_offerer != current_user
+    .row
+      = link_to 'この求人者を削除', job_offerer_path(@job_offerer), data: { confirm: "この求人者を削除しますか?" }, method: :delete
