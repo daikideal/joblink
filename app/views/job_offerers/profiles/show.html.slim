@@ -28,11 +28,11 @@
   .row
     - @profile.tag_list.each do |tag|
       = link_to tag, job_offerers_path(tag_name: tag), class: 'chip'
-- if correct_user?
-  .section
-    .row
-      = link_to 'アカウント設定', edit_job_offerer_registration_path
 - if user_signed_in?
-  - if current_user.admin? && @job_offerer != current_user
-    .row
-      = link_to 'この求人者を削除', job_offerer_path(@job_offerer), data: { confirm: "この求人者を削除しますか?" }, method: :delete
+  .section
+    - if correct_user?
+      .row
+        = link_to 'アカウント設定', edit_job_offerer_registration_path
+    - if current_user.admin? && @job_offerer != current_user
+      .row
+        = link_to 'この求人者を削除', job_offerer_path(@job_offerer), data: { confirm: "この求人者を削除しますか?" }, method: :delete
