@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   devise_scope :job_offerer do
     get 'confirm_email', to: 'job_offerers/registrations#confirm_email'
+    post 'job_offerers/guest_sign_in', to: 'job_offerers/sessions#guest'
   end
 
   scope module: :job_offerers do
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
   devise_scope :job_seeker do
     get 'confirm_email', to: 'job_seekers/registrations#confirm_email'
+    post 'job_seekers/guest_sign_in', to: 'job_seekers/sessions#guest'
   end
 
   scope module: :job_seekers do
