@@ -19,6 +19,8 @@
           = @profile.full_name
         rt
           = @profile.full_name_furigana
+      - if correct_user? && @job_offerer.admin?
+        i.material-icons check_circle
     p
       = @profile.job_offerer.email
   blockquote
@@ -26,7 +28,11 @@
   .row
     - @profile.tag_list.each do |tag|
       = link_to tag, job_offerers_path(tag_name: tag), class: 'chip'
-- if correct_user?
+- if user_signed_in?
   .section
-    .row
-      = link_to 'アカウント設定', edit_job_offerer_registration_path
+    - if correct_user?
+      .row
+        = link_to 'アカウント設定', edit_job_offerer_registration_path
+    - if current_user.admin? && @job_offerer != current_user
+      .row
+        = link_to 'この求人者を削除', job_offerer_path(@job_offerer), data: { confirm: "この求人者を削除しますか?" }, method: :delete

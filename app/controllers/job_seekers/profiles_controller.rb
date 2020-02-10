@@ -1,9 +1,10 @@
 class JobSeekers::ProfilesController < ApplicationController
   include Common
 
-  before_action :authenticate_job_seeker!, except: %i[index show]
+  before_action :authenticate_job_seeker!, except: %i[index show destroy]
   before_action :profile_exists_already, only: %i[new create]
   before_action :require_correct_user, only: %i[edit update]
+  before_action :require_admin, only: %i[destroy]
 
   def index
     popular_tags
@@ -39,6 +40,12 @@ class JobSeekers::ProfilesController < ApplicationController
     else
       render 'edit', alert: 'プロフィールの更新に失敗しました'
     end
+  end
+
+  def destroy
+    @job_seeker = JobSeeker.find(params[:id])
+    @job_seeker.destroy
+    redirect_to job_seekers_path, notice: '求職者を削除しました。'
   end
 
   private

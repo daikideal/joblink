@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :job_offerers do
-    resources :job_offerers, only: %i[index show], controller: :profiles do
+    resources :job_offerers, only: %i[index show destroy], controller: :profiles do
       resource :profile, except: %i[show destroy]
     end
   end
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :job_seekers do
-    resources :job_seekers, only: %i[index show], controller: :profiles do
+    resources :job_seekers, only: %i[index show destroy], controller: :profiles do
       resource :profile, except: %i[show destroy]
       resource :resume, except: %i[index show]
     end

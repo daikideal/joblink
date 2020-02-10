@@ -19,6 +19,8 @@
           = @profile.full_name
         rt
           = @profile.full_name_furigana
+      - if correct_user? && @job_seeker.admin?
+        i.material-icons check_circle
     p
       = @profile.job_seeker.email
   blockquote
@@ -43,7 +45,11 @@
       .section
         p 求人をブックマークしていません。
         = link_to '求人を探す', job_postings_path
-- if correct_user?
+- if user_signed_in?
   .section
-    .row
-      = link_to 'アカウント設定', edit_job_seeker_registration_path
+    - if correct_user?
+      .row
+        = link_to 'アカウント設定', edit_job_seeker_registration_path
+    - if current_user.admin? && @job_seeker != current_user
+      .row
+        = link_to 'この求職者を削除', job_seeker_path(@job_seeker), data: { confirm: "この求職者を削除しますか?" }, method: :delete

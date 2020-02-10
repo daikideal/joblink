@@ -19,4 +19,8 @@ module ApplicationHelper
     return true if controller.controller_name == 'rooms' &&
                    controller.action_name == 'show'
   end
+
+  def user_signed_in?
+    return true if job_offerer_signed_in? || job_seeker_signed_in?
+  end
 end

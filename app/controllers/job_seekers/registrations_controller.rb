@@ -25,9 +25,13 @@ class JobSeekers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    if resource == current_user && current_user.admin?
+      redirect_back(fallback_location: root_path, alert: '管理者は削除できません')
+    else
+      super
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

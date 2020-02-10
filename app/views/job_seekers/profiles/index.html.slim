@@ -22,6 +22,8 @@ h4
         = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
           - if profile.avatar.attached?
             = image_tag profile.shaped_avatar, class: 'circle'
+          - else 
+            = image_tag '/default_avatar.png', class: 'circle'
           span.title
             = profile.full_name
           p
