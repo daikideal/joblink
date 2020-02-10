@@ -1,9 +1,10 @@
 class JobOfferers::ProfilesController < ApplicationController
   include Common
 
-  before_action :authenticate_job_offerer!, except: %i[index show]
+  before_action :authenticate_job_offerer!, except: %i[index show destroy]
   before_action :profile_exists_already, only: %i[new create]
   before_action :require_correct_user, only: %i[edit update]
+  before_action :require_admin, only: %i[destroy]
 
   def index
     popular_tags
