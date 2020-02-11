@@ -32,6 +32,9 @@ first_name = %i[輝 薫 翼 雨彦 想楽 クリス 美優 楓 瑞樹 心 菜々
 last_name = %i[天道 桜庭 柏木 葛之葉 北村 古論 三船 高垣 川島 佐藤 安部 硲 舞田 山下 山村]
 first_name_furigana = %i[てる かおる つばさ あめひこ そら クリス みゆ かえで みずき しん なな みちお るい じろう けん]
 last_name_furigana = %i[てんどう さくらば かしわぎ くずのは きたむら ころん みふね たかがき かわしま さとう あべ はざま まいた やました やまむら]
+tag = [%w[法務], %w[Python Django], %w[AWS], %w[AWS GCP Azure], %w[PHP laravel],
+       %w[Rails Ruby], %w[メーカー 生産管理], %w[総務 人事], %w[Rails Docker CircleCI], %w[フリーランス],
+       %w[Java C#], %w[Rails Django], %w[Go AWS], %w[Azure], %w[WordPress]]
 
 15.times do |n|
   user = JobOfferer.create!(
@@ -41,7 +44,8 @@ last_name_furigana = %i[てんどう さくらば かしわぎ くずのは き�
   profile = user.create_profile!(
     first_name: first_name[n], last_name: last_name[n],
     first_name_furigana: first_name_furigana[n],
-    last_name_furigana: last_name_furigana[n]
+    last_name_furigana: last_name_furigana[n],
+    tag_list: tag[n]
   )
   profile.avatar.attach(
     io: File.open("db/sample/avatar/offerer_#{n + 1}.jpeg"),

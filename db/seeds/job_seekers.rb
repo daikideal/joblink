@@ -18,6 +18,9 @@ first_name = %i[冬馬 北斗 翔太 恋鐘 摩美々 結華 咲耶 霧子 隼�
 last_name = %i[天ヶ瀬 伊集院 御手洗 月岡 田中 三峰 白瀬 幽谷 秋山 冬美 榊 若里 伊勢谷 都築 神楽]
 first_name_furigana = %i[とうま ほくと しょうた こがね まみみ ゆいか さくや ゆうこく はやと じゅん なつき はるな しき けい れい]
 last_name_furigana = %i[あまがせ いじゅういん みてらい つきおか たなか みつみね しらせ きりこ あきやま とうみ さかき わかざと いせや つづき かぐら]
+tag = [%w[Rails Ruby], %w[Python Django], %w[AWS], %w[Azure], %w[PHP laravel],
+       %w[経理 人事], %w[営業], %w[人事], %w[Rails 実務未経験], %w[フリーランス],
+       %w[Ruby], %w[Rails Django], %w[Go AWS], %w[AWS GCP], %w[PHP Ruby]]
 
 15.times do |n|
   user = JobSeeker.create!(
@@ -27,7 +30,8 @@ last_name_furigana = %i[あまがせ いじゅういん みてらい つきお�
   profile = user.create_profile!(
     first_name: first_name[n], last_name: last_name[n],
     first_name_furigana: first_name_furigana[n],
-    last_name_furigana: last_name_furigana[n]
+    last_name_furigana: last_name_furigana[n],
+    tag_list: tag[n]
   )
   profile.avatar.attach(
     io: File.open("db/sample/avatar/seeker_#{n + 1}.jpeg"),
