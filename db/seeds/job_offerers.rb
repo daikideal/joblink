@@ -14,16 +14,16 @@ admin.profile.avatar.attach(
   io: File.open('db/sample/avatar/admin.jpeg'), filename: 'admin.jpeg'
 )
 
-test_offerer = JobOfferer.create!(
+guest = JobOfferer.create!(
   email: 'test_offerer@joblink.com', password: 'password',
   confirmed_at: Time.now
 )
-test_offerer.create_profile!(
+guest.create_profile!(
   first_name: '求人者', last_name: '名無しの',
   first_name_furigana: 'きゅうじんしゃ', last_name_furigana: 'ななしの',
   bio: '簡単ログイン中のユーザーです'
 )
-test_offerer.profile.avatar.attach(
+guest.profile.avatar.attach(
   io: File.open('db/sample/avatar/guest_offerer.jpeg'),
   filename: 'guest_offerer.jpeg'
 )
