@@ -18,6 +18,10 @@ first_name = %i[冬馬 北斗 翔太 恋鐘 摩美々 結華 咲耶 霧子 隼�
 last_name = %i[天ヶ瀬 伊集院 御手洗 月岡 田中 三峰 白瀬 幽谷 秋山 冬美 榊 若里 伊勢谷 都築 神楽]
 first_name_furigana = %i[とうま ほくと しょうた こがね まみみ ゆいか さくや ゆうこく はやと じゅん なつき はるな しき けい れい]
 last_name_furigana = %i[あまがせ いじゅういん みてらい つきおか たなか みつみね しらせ きりこ あきやま とうみ さかき わかざと いせや つづき かぐら]
+bio = ['がんばります！', 'モチベーションを常に高く。', '継続は力なり', '考える前にやってみる！',
+       'よろしくお願いします！！', '好きを仕事にするのが夢です。', '過去ばかり振り向いているのではダメだ。',
+       '未経験でも、学ぶ姿勢なら負けません！', '前進し続けられたのは、自分がやることを愛していたからだ。', '大切なのは明日何が起きるか',
+       '何かを捨てないと前に進めない。', '毎日前進', 'Apple製品が好き', 'なんでもやります！！', '駆け出しですが、頑張ります！']
 tag = [%w[Rails Ruby], %w[Python Django], %w[AWS], %w[Azure], %w[PHP laravel],
        %w[経理 人事], %w[営業], %w[人事], %w[Rails 実務未経験], %w[フリーランス],
        %w[Ruby], %w[Rails Django], %w[Go AWS], %w[AWS GCP], %w[PHP Ruby]]
@@ -31,7 +35,7 @@ tag = [%w[Rails Ruby], %w[Python Django], %w[AWS], %w[Azure], %w[PHP laravel],
     first_name: first_name[n], last_name: last_name[n],
     first_name_furigana: first_name_furigana[n],
     last_name_furigana: last_name_furigana[n],
-    tag_list: tag[n]
+    bio: bio[n], tag_list: tag[n]
   )
   profile.avatar.attach(
     io: File.open("db/sample/avatar/seeker_#{n + 1}.jpeg"),
