@@ -25,6 +25,23 @@ bio = ['がんばります！', 'モチベーションを常に高く。', '継�
 tag = [%w[Rails Ruby], %w[Python Django], %w[AWS], %w[Azure], %w[PHP laravel],
        %w[経理 人事], %w[営業], %w[人事], %w[Rails 実務未経験], %w[フリーランス],
        %w[Ruby], %w[Rails Django], %w[Go AWS], %w[AWS GCP], %w[PHP Ruby]]
+content = [
+  '<h1>希望職種</h1><div>自分がこれまで培ってきたスキルを活かすことができるやりがいのあるポジション</div>',
+  '<h1>経歴・スキルの要約</h1><div>3年間のweb開発経験</div>',
+  '<h1>職歴</h1><div>ABCインターナショナル 2015.5 ~ 現在</div>',
+  '<h1>学歴</h1><div>東京大学 工学部</div>',
+  '<h1>資格・スキル</h1><div>TOEIC 850 (2019)</div>',
+  '<h1>その他特筆事項</h1><div>南アメリカでのボランティア活動</div>',
+  '<h1>希望職種</h1><div>新規の事業やプロジェクトの中核をになっていくポジション</div>',
+  '<h1>経歴・スキルの要約</h1><div>自社プロダクトのマーケティングを2年間</div>',
+  '<h1>職歴</h1><div>DDDシステムズ株式会社 2012.4 ~ 現在</div>',
+  '<h1>学歴</h1><div>早稲田大学 法学部</div>',
+  '<h1>資格・スキル</h1><div>基本情報技術者 (2018)</div>',
+  '<h1>その他特筆事項</h1><div>地域のスポーツ活動</div>',
+  '<h1>希望職種</h1><div>あるものを改善したり強みをさらに伸ばす仕事</div>',
+  '<h1>経歴・スキルの要約</h1><div>6年間のシステムアーキテクト</div>',
+  '<h1>職歴</h1><div>株式会社X 2018.4 ~ 現在</div>'
+]
 
 15.times do |n|
   user = JobSeeker.create!(
@@ -41,4 +58,5 @@ tag = [%w[Rails Ruby], %w[Python Django], %w[AWS], %w[Azure], %w[PHP laravel],
     io: File.open("db/sample/avatar/seeker_#{n + 1}.jpeg"),
     filename: "seeker_#{n + 1}.jpeg"
   )
+  user.create_resume!(content: content[n])
 end
