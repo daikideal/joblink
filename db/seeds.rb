@@ -31,6 +31,7 @@ content = [
 tag = [%w[Rails Ruby], %w[Python Django], %w[PHP laravel],
        %w[Rails Docker], %w[フリーランス], %w[Java C#], %w[Rails Django],
        %w[Go AWS], %w[Azure], %w[WordPress]]
+
 10.times do |n|
   posting = JobPosting.create!(
     job_offerer_id: n + 3,
