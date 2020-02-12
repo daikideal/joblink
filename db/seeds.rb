@@ -29,3 +29,16 @@ tag = [%w[Rails Ruby], %w[Python Django], %w[PHP laravel],
     io: File.open("db/sample/header/header_#{n + 1}.jpg"), filename: "header_#{n + 1}.jpg"
   )
 end
+
+3.upto(8) do |n|
+  Bookmark.create!(
+    [
+      { job_seeker_id: n, job_posting_id: n + 1 },
+      { job_seeker_id: n, job_posting_id: n + 2 }
+    ]
+  )
+end
+
+15.downto(9) do |n|
+  Bookmark.create!(job_seeker_id: n, job_posting_id: n - 5)
+end
