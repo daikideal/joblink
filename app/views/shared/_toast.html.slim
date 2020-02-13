@@ -1,0 +1,4 @@
+- unless flash.empty?
+  - flash.each do |message_type, message|
+    javascript:
+      M.toast({html: "#{message}"})

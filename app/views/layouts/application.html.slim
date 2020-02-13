@@ -13,10 +13,7 @@ html
       = render 'layouts/room_header'
     - else  
       = render 'layouts/header'
-    p.notice
-      = notice
-    p.alert
-      = alert
+    = render 'shared/toast'
     .container
       = yield
     - unless room?
