@@ -14,7 +14,7 @@ require("channels")
 require("jquery")
 
 require("custom/forms")
-require("custom/navbar")
+require("custom/nav")
 require("custom/room")
 require("custom/tabs")
 require("trix")
