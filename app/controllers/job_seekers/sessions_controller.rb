@@ -18,6 +18,12 @@ class JobSeekers::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def guest
+    job_seeker = JobSeeker.find_by(email: 'test_seeker@joblink.com')
+    sign_in(job_seeker)
+    redirect_to root_url, notice: 'ゲストユーザーとしてログインしました'
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -18,5 +18,7 @@ h2
   .row
     .actions
       = f.submit "ログイン", class: 'btn'
+.row
+  = link_to 'かんたんログイン', job_seekers_guest_sign_in_path, method: :post, class: 'btn'
 .section
   = render "job_seekers/shared/links"
