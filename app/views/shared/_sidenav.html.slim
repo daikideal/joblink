@@ -1,18 +1,34 @@
 ul#slide-out.sidenav
   - if job_offerer_signed_in?
-    li = link_to "マイページ", job_offerer_path(current_job_offerer)
+    li = link_to job_offerer_path(current_job_offerer)
+      i.material-icons account_circle
+      | マイページ
   - elsif job_seeker_signed_in?
-    li = link_to "マイページ", job_seeker_path(current_job_seeker)
-  li = link_to '求人一覧', job_postings_path
-  li = link_to '求人者', job_offerers_path
-  li = link_to '求職者', job_seekers_path
+    li = link_to job_seeker_path(current_job_seeker)
+      i.material-icons account_circle
+      | マイページ
+  li = link_to job_postings_path
+    i.material-icons description
+    | 求人一覧
+  li = link_to job_offerers_path
+    i.material-icons people
+    | 求人者一覧
+  li = link_to job_seekers_path
+    i.material-icons people_outline
+    | 求職者一覧
   - if user_signed_in?
-    li = link_to 'トーク', rooms_path
+    li = link_to rooms_path
+      i.material-icons chat
+      | トーク
     li.divider
     - if job_offerer_signed_in?
-      li = link_to "ログアウト", destroy_job_offerer_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+      li = link_to destroy_job_offerer_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+        i.material-icons exit_to_app
+        | ログアウト
     -elsif job_seeker_signed_in?
-      li = link_to "ログアウト", destroy_job_seeker_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+      li = link_to destroy_job_seeker_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+        i.material-icons exit_to_app
+        | ログアウト
   - else
     li.divider
     li.no-padding
