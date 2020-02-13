@@ -10,10 +10,10 @@
           li = link_to 'トーク', rooms_path
           - if job_offerer_signed_in?
             li = link_to "マイページ", job_offerer_path(current_job_offerer)
-            li = link_to "ログアウト", destroy_job_offerer_session_path, method: :delete
+            li = link_to "ログアウト", destroy_job_offerer_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
           -elsif job_seeker_signed_in?
             li = link_to "マイページ", job_seeker_path(current_job_seeker)
-            li = link_to "ログアウト", destroy_job_seeker_session_path, method: :delete
+            li = link_to "ログアウト", destroy_job_seeker_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
         - else
           li 
             a.dropdown-trigger href='#' data-target='dropdown-job-offerer' 
