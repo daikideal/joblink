@@ -1,0 +1,30 @@
+ul#slide-out.sidenav
+  li = link_to '求人一覧', job_postings_path
+  li = link_to '求人者', job_offerers_path
+  li = link_to '求職者', job_seekers_path
+  - if user_signed_in?
+    li = link_to 'トーク', rooms_path
+    li.divider
+    - if job_offerer_signed_in?
+      li = link_to "マイページ", job_offerer_path(current_job_offerer)
+      li = link_to "ログアウト", destroy_job_offerer_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+    -elsif job_seeker_signed_in?
+      li = link_to "マイページ", job_seeker_path(current_job_seeker)
+      li = link_to "ログアウト", destroy_job_seeker_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+  - else
+    li.divider
+    li 
+      a.dropdown-trigger href='#' data-target='side-dropdown-job-offerer' 
+        | 求人者の方はこちら
+        i.material-icons.right arrow_drop_down
+    li 
+      a.dropdown-trigger href='#' data-target='side-dropdown-job-seeker' 
+        | 求職者の方はこちら
+        i.material-icons.right arrow_drop_down
+
+ul#side-dropdown-job-offerer.dropdown-content
+  li = link_to "サインアップ", new_job_offerer_registration_path
+  li = link_to "ログイン", new_job_offerer_session_path
+ul#side-dropdown-job-seeker.dropdown-content
+  li = link_to "サインアップ", new_job_seeker_registration_path
+  li = link_to "ログイン", new_job_seeker_session_path

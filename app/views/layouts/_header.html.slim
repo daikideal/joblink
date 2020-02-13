@@ -2,6 +2,8 @@
   nav
     .nav-wrapper
       = link_to "JOBLINK", root_path, class: "brand-logo"
+      a.sidenav-trigger.right href='#' data-target='slide-out'
+        i.material-icons menu
       ul#nav-mobile.right.hide-on-med-and-down
         li = link_to '求人一覧', job_postings_path
         li = link_to '求人者', job_offerers_path
@@ -29,3 +31,4 @@ ul#dropdown-job-offerer.dropdown-content
 ul#dropdown-job-seeker.dropdown-content
   li = link_to "サインアップ", new_job_seeker_registration_path
   li = link_to "ログイン", new_job_seeker_session_path
+= render 'shared/sidenav'
