@@ -1,5 +1,3 @@
-h1.center-align
-  | JOBLINK
 - if job_offerer_signed_in?
   p.center-align
     | こんにちは、
@@ -7,5 +5,4 @@ h1.center-align
 - elsif job_seeker_signed_in?
   = render 'job_seeker'
 - else  
-  p.center-align
-    | ここはJOBLINKのHomeページです
+  = render 'not_signed_in'
