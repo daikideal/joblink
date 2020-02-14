@@ -8,6 +8,14 @@ class JobPosting < ApplicationRecord
   acts_as_taggable
 
   scope :recently, -> { order(updated_at: :desc) }
+  scope :popular, lambda {
+    find(
+      Bookmark.group(:job_posting_id)
+              .order('count(job_posting_id) desc')
+              .limit(5)
+              .pluck(:job_posting_id)
+    )
+  }
 
   def bookmarked_by(job_seeker)
     bookmarks.find_by(job_seeker_id: job_seeker)
