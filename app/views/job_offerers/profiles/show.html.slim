@@ -15,10 +15,8 @@
   .col.s10
     h4
       ruby
-        rb
-          = @profile.full_name
-        rt
-          = @profile.full_name_furigana
+        rb = @profile.full_name
+        rt = @profile.full_name_furigana
       - if correct_user? && @job_offerer.admin?
         i.material-icons check_circle
     p
