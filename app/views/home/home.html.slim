@@ -1,17 +1,29 @@
 - if user_signed_in?
-  .section
-    h4 人気の求人
-    - if @popular_postings.present?
-      = render 'job_postings/list', job_postings: @popular_postings
-    - else
-      .row
-        p 人気の求人が見つかませんでした。
-  .section
-    h4 新着求人ハイライト
-    - if @highlights.present?
-      = render 'job_postings/list', job_postings: @highlights
-    - else
-      .row
-        p 新着の求人が見つかりませんでした。
+  .row
+    .col.s12
+      .card
+        .card-content
+          span.card-title 
+            h4 人気の求人
+          - if @popular_postings.present?
+            = render 'job_postings/list', job_postings: @popular_postings
+          - else
+            .row
+              p 人気の求人が見つかませんでした。
+        .card-action
+          = link_to '求人一覧を見る', job_postings_path, class: 'blue-text'
+  .row
+    .col.s12
+      .card
+        .card-content
+          span.card-title 
+            h4 新着求人ハイライト
+          - if @highlights.present?
+            = render 'job_postings/list', job_postings: @highlights
+          - else
+            .row
+              p 新着の求人が見つかりませんでした。
+        .card-action
+          = link_to '求人一覧を見る', job_postings_path, class: 'blue-text'
 - else  
   = render 'not_signed_in'
