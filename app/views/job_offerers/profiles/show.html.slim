@@ -28,6 +28,19 @@
   .row
     - @profile.tag_list.each do |tag|
       = link_to tag, job_offerers_path(tag_name: tag), class: 'chip'
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s12 
+        = link_to "投稿した求人", "#job_postings"
+  #job_postings.col.s12
+    - if @job_offerer.job_postings.present?  
+      = render 'job_postings/list', job_postings: @job_offerer.job_postings
+    - else
+      .section
+        p 求人を投稿していません。
+        - if correct_user?
+          = link_to '求人を投稿する', new_job_posting_path
 - if user_signed_in?
   .section
     - if correct_user?
