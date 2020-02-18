@@ -1,4 +1,23 @@
 - if user_signed_in?
+  .section
+    .card
+      .card-content
+        span.card-title
+          h4 最新のトークルーム
+        - if current_user.rooms.present?
+          - if job_offerer_signed_in?
+            = render 'rooms/now_talkings', rooms: @rooms, user: 'job_offerer', partner: 'job_seeker'
+          - elsif job_seeker_signed_in?
+            = render 'rooms/now_talkings', rooms: @rooms, user: 'job_seeker', partner: 'job_offerer'
+        - else
+          .row
+            p 現在トーク中の相手はいません。
+      .card-action
+        = link_to '全てのトークルームを見る', rooms_path, class: 'blue-text'
+        - if job_offerer_signed_in?
+          = link_to 'トーク相手を探す', job_seekers_path, class: 'blue-text'
+        - elsif job_seeker_signed_in?
+          = link_to 'トーク相手を探す', job_offerers_path, class: 'blue-text'
   .row
     .col.s12
       .card
