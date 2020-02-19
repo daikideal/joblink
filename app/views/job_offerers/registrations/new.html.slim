@@ -1,7 +1,7 @@
 h2
   | 求人者 サインアップ
 = form_with model: @job_offerer, local: true do |f|
-  = render "devise/shared/error_messages", resource: resource
+  = devise_error_messages!
   .row
     .input-field
       = f.label 'メールアドレス'

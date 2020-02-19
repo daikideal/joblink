@@ -2,7 +2,7 @@
   h2
     | アカウント設定
   = form_with model: @job_seeker, url: job_seeker_registration_path, local: true do |f|
-    = render "devise/shared/error_messages", model: f.object
+    = devise_error_messages!
     .row
       .input-field
         = f.label 'メールアドレス'
