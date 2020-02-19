@@ -8,10 +8,6 @@
     .card-content
       == @job_seeker.resume.content
 - else
-  .card
-    .card-content
-      p 
-        | 経歴書は作成されていません。
-        - if correct_user?
-          .row
-            = link_to '経歴書を作成する', new_job_seeker_resume_path(@job_seeker)
+  p  経歴書は作成されていません。
+  - if correct_user?
+    = link_to '経歴書を作成する', new_job_seeker_resume_path(@job_seeker)
