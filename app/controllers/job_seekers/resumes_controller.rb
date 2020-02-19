@@ -14,7 +14,7 @@ class JobSeekers::ResumesController < ApplicationController
     if @resume.save
       redirect_to job_seeker_path(current_job_seeker), notice: '経歴書を作成しました'
     else
-      render new, alert: '経歴書の作成に失敗しました'
+      render 'new', alert: '経歴書の作成に失敗しました'
     end
   end
 
