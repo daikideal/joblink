@@ -8,8 +8,14 @@
       = @job_posting.title
   .row.valign-wrapper
     .col.s10
-      | by 
-      = @job_posting.job_offerer.profile.full_name
+      .valign-wrapper
+        = link_to job_offerer_path(@job_posting.job_offerer) do
+          - if @job_posting.job_offerer.profile.avatar.attached?
+            = image_tag @job_posting.job_offerer.profile.avatar.variant(resize_to_fit: [50, 50]), class: 'circle'
+          - else
+            = image_tag '/default_avatar.png', class: 'circle', size: '50x50'
+        | &nbsp
+        = link_to @job_posting.job_offerer.profile.full_name, job_offerer_path(@job_posting.job_offerer), class: 'black-text'
     .col.s2
       .right
         = render 'bookmarks/bookmark', job_posting: @job_posting
