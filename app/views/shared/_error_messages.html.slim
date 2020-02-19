@@ -1,5 +1,11 @@
 - if model.errors.any?
-  .
-    ul
-      - model.errors.full_messages.each do |message|
-        li = message
+  .row
+    .card-panel.red.white-text
+      .valign-wrapper
+        .col.s2
+          .center  
+            i.material-icons.medium error_outline
+        .col.s10
+          ul
+            - model.errors.full_messages.each do |message|
+              li = message
