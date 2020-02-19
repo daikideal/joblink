@@ -2,7 +2,7 @@ h3
   | 経歴書編集
 p 文章や画像を使ってあなたの経歴を伝えましょう。
 = form_with model: @resume, url: job_seeker_resume_path, local: true do |f|
-  = render 'layouts/error_messages', model: f.object
+  = render 'shared/error_messages', model: f.object
   .row
     .input-filed
       = f.rich_text_area :content

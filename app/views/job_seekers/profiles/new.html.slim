@@ -1,7 +1,7 @@
 h3
   | プロフィールの編集
 = form_with model: @profile, url: job_seeker_profile_path, local: true do |f|
-  = render 'layouts/error_messages', model: f.object
+  = render 'shared/error_messages', model: f.object
   .row.valign-wrapper
     .col.s6
       .center

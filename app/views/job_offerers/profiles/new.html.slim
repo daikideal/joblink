@@ -1,7 +1,7 @@
 h3
   | プロフィールの登録
 = form_with model: @profile, url: job_offerer_profile_path,  local: true do |f|
-  = render 'layouts/error_messages', model: f.object
+  = render 'shared/error_messages', model: f.object
   .row.valign-wrapper
     .col.s6
       .center
