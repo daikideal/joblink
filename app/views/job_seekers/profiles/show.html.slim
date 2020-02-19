@@ -35,7 +35,7 @@
         = link_to 'ブックマーク', "#bookmark"
   #resume.col.s12
     .section
-      = render 'job_seekers/resumes/sheet'
+      = render 'job_seekers/resumes/resume'
   #bookmark.col.s12
     - if @job_seeker.bookmarks.present?  
       = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
