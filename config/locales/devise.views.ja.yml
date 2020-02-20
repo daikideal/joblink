@@ -59,6 +59,11 @@ ja:
         action: "アカウント確認"
         greeting: "ようこそ、%{recipient}さん!"
         instruction: "次のリンクでメールアドレスの確認が完了します:"
+      email_change:
+        instruction: "以下のメールアドレスに変更中です。"
+        instruction_2: "以下のメールアドレスに変更されました。"
+      password_change:
+        instruction: "パスワードが変更されました。"
       reset_password_instructions:
         action: "パスワード変更"
         greeting: "こんにちは、%{recipient}さん!"
