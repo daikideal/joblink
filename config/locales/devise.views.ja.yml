@@ -46,7 +46,7 @@ ja:
     models:
       job_offerer: "求人者"
       job_seeker: "求職者"
-  devise:
+  job_offerers:
     confirmations:
       new:
         resend_confirmation_instructions: "アカウント確認メール再送"
