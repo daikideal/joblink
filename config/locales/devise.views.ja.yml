@@ -34,12 +34,16 @@ ja:
       job_offerer:
         current_password: "現在のパスワード"
         email: "メールアドレス"
+        new_password: "新しいパスワード"
+        new_password_confirmation: "新しいパスワード(確認)"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
         remember_me: "ログインを記憶"
       job_seeker:
         current_password: "現在のパスワード"
         email: "メールアドレス"
+        new_password: "新しいパスワード"
+        new_password_confirmation: "新しいパスワード(確認)"
         password: "パスワード"
         password_confirmation: "パスワード(確認)"
         remember_me: "ログインを記憶"
