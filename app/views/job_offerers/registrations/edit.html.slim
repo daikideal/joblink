@@ -5,20 +5,20 @@
     = devise_error_messages!
     .row
       .input-field
-        = f.label 'メールアドレス'
-        = f.email_field :email, autocomplete: "email"
+        = f.label :email
+        = f.email_field :email, autocomplete: :email
         span.helper-text
-          | *変更しない場合は編集不要
+          = t('.leave_blank_if_you_don_t_want_to_change_it')
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       .card-panel
-        | 新しいメールアドレスがまだ認証されていません : 
+        = t('.currently_waiting_confirmation_for_email') 
         = resource.unconfirmed_email
     .row
       .input-field
-        = f.label '新しいパスワード'
-        = f.password_field :password, autocomplete: "new-password"
+        = f.label :new_password
+        = f.password_field :password, autocomplete: :new_password
         span.helper-text
-          | *変更しない場合は入力不要
+          = t('.leave_blank_if_you_don_t_want_to_change_it')
           - if @minimum_password_length
             br
             | *パスワードは
@@ -26,29 +26,29 @@
             | 文字以上
     .row
       .input-field
-        = f.label '新しいパスワード(確認)'
-        = f.password_field :password_confirmation, autocomplete: "new-password"
+        = f.label :new_password_confirmation
+        = f.password_field :password_confirmation, autocomplete: :new_password_confirmation
     .row
       .input-field
-        = f.label '現在のパスワード'
-        = f.password_field :current_password, autocomplete: "current-password"
+        = f.label :current_password
+        = f.password_field :current_password, autocomplete: :current_password
         span.helper-text
-          | *ご本人の変更かを確認するため、パスワードを入力してください。
+          = t('.we_need_your_current_password_to_confirm_your_changes')
     .row
       .actions
-        = f.submit "更新", class: 'btn right'
+        = f.submit t('.update'), class: 'btn right'
 - unless current_user.admin?
   .divider
   .section
     h3
-      | アカウントを削除する
+      = t('.cancel_my_account')
     .row
       p
-        | サービスが気に入りませんでしたか？
+        = t('.unhappy')
         br
         | 以下のリンクからアカウントを削除できます。
     .row
-      = link_to "退会する", job_offerer_registration_path, data: { confirm: "本当に退会しますか?" }, method: :delete
+      = link_to "退会する", job_offerer_registration_path, data: { confirm: t('.are_you_sure') }, method: :delete
       p
         | *削除したアカウントは完全に復元できなくなります
     .row  

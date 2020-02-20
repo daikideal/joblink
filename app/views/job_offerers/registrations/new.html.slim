@@ -1,15 +1,16 @@
 h2
-  | 求人者 サインアップ
+  | 求人者
+  =< t('.sign_up')
 = form_with model: @job_offerer, local: true do |f|
   = devise_error_messages!
   .row
     .input-field
-      = f.label 'メールアドレス'
-      = f.email_field :email, autofocus: true, autocomplete: "email"
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: :email
   .row
     .input-field
-      = f.label 'パスワード'
-      = f.password_field :password, autocomplete: "new-password"
+      = f.label :password
+      = f.password_field :password, autocomplete: :password
       - if @minimum_password_length
         span.helper-text
           | *パスワードは
@@ -17,11 +18,11 @@ h2
           | 文字以上
   .row
     .input-field
-      = f.label 'パスワード(確認)'
-      = f.password_field :password_confirmation, autocomplete: "new-password"
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: :password_confirmation
   .row
     .actions
-      = f.submit 'サインアップ', class: 'btn'
+      = f.submit t('.sign_up'), class: 'btn'
 .row
   = link_to 'かんたんログイン', job_offerers_guest_sign_in_path, method: :post, class: 'btn'
 .section
