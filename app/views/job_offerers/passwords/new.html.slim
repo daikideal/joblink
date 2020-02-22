@@ -1,11 +1,12 @@
 h2
   = t('.forgot_your_password')
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+= form_with model: @job_offerer, url: job_offerer_password_path, local: true do |f|
   = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: :email
-  .actions
-    = f.submit t('.send_me_reset_password_instructions')
+  .row
+    .input-field
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: :email
+  .row
+    .actions
+      = f.submit t('.send_me_reset_password_instructions'), class: 'btn right'
 = render "job_offerers/shared/links"
