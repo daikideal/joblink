@@ -5,6 +5,8 @@ class JobPosting < ApplicationRecord
   has_one_attached :header
   has_rich_text :content
 
+  validates :title, :content, presence: true
+
   acts_as_taggable
 
   scope :recently, -> { order(updated_at: :desc) }

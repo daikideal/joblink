@@ -1,6 +1,7 @@
 h3
   | 求人情報の編集
 = form_with model: @job_posting, local: true do |f|
+  = render 'shared/error_messages', model: f.object
   .row
     .center
       - if @job_posting.header.attached?
