@@ -6,7 +6,7 @@ h2
   .row
     .input-field
       = f.label :password, t('.new_password')
-      = f.password_field :password, autofocus: true, autocomplete: :password
+      = f.password_field :password, autocomplete: :password
       span.helper-text
         - if @minimum_password_length
           | *パスワードは
