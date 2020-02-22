@@ -16,10 +16,10 @@ module Common
 
     if job_offerer_signed_in?
       redirect_to new_job_offerer_profile_path(current_user)
-      flash[:notice] = 'この機能はプロフィールの設定が必要です'
+      flash[:notice] = 'プロフィールの設定が必要です'
     elsif job_seeker_signed_in?
       redirect_to new_job_seeker_profile_path(current_user)
-      flash[:notice] = 'この機能はプロフィールの設定が必要です'
+      flash[:notice] = 'プロフィールの設定が必要です'
     end
   end
 
