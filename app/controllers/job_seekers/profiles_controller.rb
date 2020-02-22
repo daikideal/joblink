@@ -4,7 +4,6 @@ class JobSeekers::ProfilesController < ApplicationController
   before_action :authenticate_job_seeker!, except: %i[index show destroy]
   before_action :profile_exists_already, only: %i[new create]
   before_action :require_correct_user, only: %i[edit update]
-  before_action :require_profile, only: %i[show]
   before_action :require_admin, only: %i[destroy]
 
   def index
@@ -15,6 +14,7 @@ class JobSeekers::ProfilesController < ApplicationController
   def show
     @job_seeker = JobSeeker.find(params[:id])
     @profile = @job_seeker.profile
+    confirm_profile
   end
 
   def new
