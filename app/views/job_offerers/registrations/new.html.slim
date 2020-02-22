@@ -22,7 +22,7 @@ h2
       = f.password_field :password_confirmation, autocomplete: :password_confirmation
   .row
     .actions
-      = f.submit t('.sign_up'), class: 'btn'
+      = f.submit t('.sign_up'), class: 'btn right'
 .row
-  = link_to 'かんたんログイン', job_offerers_guest_sign_in_path, method: :post, class: 'btn'
+  = link_to 'かんたんログイン', job_offerers_guest_sign_in_path, method: :post, class: 'btn right'
 = render "job_offerers/shared/links"
