@@ -12,11 +12,11 @@ h2
         = @minimum_password_length
         |  characters minimum)
       br
-    = f.password_field :password, autofocus: true, autocomplete: t('.new_password')
+    = f.password_field :password, autofocus: true, autocomplete: :password
   .field
     = f.label :password_confirmation, t('.confirm_new_password')
     br
-    = f.password_field :password_confirmation, autocomplete: t('.new_password')
+    = f.password_field :password_confirmation, autocomplete: :password_confirmation
   .actions
     = f.submit t('.change_my_password')
 = render "job_offerers/shared/links"
