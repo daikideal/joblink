@@ -8,10 +8,10 @@
           - else
             = image_tag '/no_image.png', size: '1000x300'
       = link_to(job_posting_path(job_posting)) do
-        .card-content.black-text
+        .card-content
           .row
             .col.s10
-              h5
+              h5.black-text
                 = job_posting.title
             .col.s2
               .center
