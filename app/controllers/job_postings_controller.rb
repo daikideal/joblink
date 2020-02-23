@@ -7,7 +7,7 @@ class JobPostingsController < ApplicationController
 
   def index
     popular_tags
-    @job_postings = searched_postings.page(params[:page])
+    @job_postings = searched_postings.page(params[:page]).per(10)
   end
 
   def show
