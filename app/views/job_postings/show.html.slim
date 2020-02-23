@@ -11,7 +11,7 @@
       .valign-wrapper
         = link_to job_offerer_path(@job_posting.job_offerer) do
           - if @job_posting.job_offerer.profile.avatar.attached?
-            = image_tag @job_posting.job_offerer.profile.avatar.variant(resize_to_fit: [50, 50]), class: 'circle'
+            = image_tag @job_posting.job_offerer.profile.avatar.variant(resize_to_fill: [50, 50]), class: 'circle'
           - else
             = image_tag '/default_avatar.png', class: 'circle', size: '50x50'
         | &nbsp
