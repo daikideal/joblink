@@ -1,8 +1,10 @@
 .section
   .row
-    - if @job_posting.header.attached?
-      .image
+    .center
+      - if @job_posting.header.attached?
         = image_tag @job_posting.shaped_header, class: 'responsive-img'
+      - else
+        = image_tag '/no_image.png', class: 'responsive-img'
   .row
     h4
       = @job_posting.title
