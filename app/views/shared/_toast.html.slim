@@ -1,4 +1,5 @@
 - unless flash.empty?
   - flash.each do |message_type, message|
+    - next if message_type == 'timedout'
     javascript:
       M.toast({html: "#{message}"})
