@@ -6,6 +6,7 @@ class JobPosting < ApplicationRecord
   has_rich_text :content
 
   validates :title, :content, presence: true
+  validates :title, length: { maximum: 40 }
 
   acts_as_taggable
 
