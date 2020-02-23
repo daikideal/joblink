@@ -6,6 +6,7 @@ class JobOffererProfile < ApplicationRecord
   validates :first_name, :last_name,
             :first_name_furigana, :last_name_furigana,
             presence: true
+  validates :bio, length: { maximum: 160 }
 
   acts_as_taggable
 
