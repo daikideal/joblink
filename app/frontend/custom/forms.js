@@ -45,3 +45,8 @@ $(function() {
 $(document).ready(function(){
   $('.collapsible').collapsible();
 });
+
+//文字数カウント処理
+$(document).ready(function() {
+  $('input.character_limit, textarea.character_limit').characterCounter();
+});

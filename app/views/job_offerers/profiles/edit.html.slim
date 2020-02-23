@@ -40,7 +40,7 @@ h3
   .row
     .input-field.col.s12
       = f.label '自己紹介'
-      = f.text_area :bio, class: 'materialize-textarea'
+      = f.text_area :bio, class: 'materialize-textarea character_limit', data: {length: '160'}
   .row
     .input-field.col.s12
       = f.label 'タグ'

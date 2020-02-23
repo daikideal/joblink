@@ -16,7 +16,7 @@ h3
   .row
     .input-field
       = f.label 'タイトル'
-      = f.text_field :title
+      = f.text_field :title, class: 'character_limit', data: {length: "40"}
   .row
     .input-field 
       = f.label 'タグ'
