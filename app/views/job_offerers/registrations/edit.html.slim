@@ -11,13 +11,19 @@
           span.helper-text
             = t('.leave_blank_if_you_don_t_want_to_change_it')
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        .card-panel
-          = t('.currently_waiting_confirmation_for_email') 
-          = resource.unconfirmed_email
+        .row
+          .card-panel
+            .valign-wrapper
+              .col.s2
+                .center
+                  i.material-icons announcement
+              .col.s10
+                = t('.currently_waiting_confirmation_for_email') 
+                = resource.unconfirmed_email
       .row
         .input-field
           = f.label :new_password
-          = f.password_field :password, autocomplete: :new_password
+          = f.password_field :new_password, autocomplete: :new_password
           span.helper-text
             = t('.leave_blank_if_you_don_t_want_to_change_it')
             - if @minimum_password_length
@@ -28,7 +34,7 @@
       .row
         .input-field
           = f.label :new_password_confirmation
-          = f.password_field :password_confirmation, autocomplete: :new_password_confirmation
+          = f.password_field :new_password_confirmation, autocomplete: :new_password_confirmation
       .row
         .input-field
           = f.label :current_password
