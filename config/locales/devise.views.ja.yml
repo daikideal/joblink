@@ -1,5 +1,25 @@
 ja:
   activerecord:
+    models:
+      job_offerer: "求人者"
+      job_seeker: "求職者"
+    attributes:
+      job_offerer:
+        current_password: "現在のパスワード"
+        email: "メールアドレス"
+        new_password: "新しいパスワード"
+        new_password_confirmation: "新しいパスワード(確認)"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+        remember_me: "ログインを記憶"
+      job_seeker:
+        current_password: "現在のパスワード"
+        email: "メールアドレス"
+        new_password: "新しいパスワード"
+        new_password_confirmation: "新しいパスワード(確認)"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+        remember_me: "ログインを記憶"
     errors:
       models:
         job_offerer:
@@ -30,26 +50,6 @@ ja:
             too_long: "は%{count}文字以下に設定して下さい。"
             invalid: "は有効でありません。"
             confirmation: "が内容とあっていません。"
-    attributes:
-      job_offerer:
-        current_password: "現在のパスワード"
-        email: "メールアドレス"
-        new_password: "新しいパスワード"
-        new_password_confirmation: "新しいパスワード(確認)"
-        password: "パスワード"
-        password_confirmation: "パスワード(確認)"
-        remember_me: "ログインを記憶"
-      job_seeker:
-        current_password: "現在のパスワード"
-        email: "メールアドレス"
-        new_password: "新しいパスワード"
-        new_password_confirmation: "新しいパスワード(確認)"
-        password: "パスワード"
-        password_confirmation: "パスワード(確認)"
-        remember_me: "ログインを記憶"
-    models:
-      job_offerer: "求人者"
-      job_seeker: "求職者"
   job_offerers:
     confirmations:
       new:
