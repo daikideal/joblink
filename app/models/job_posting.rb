@@ -5,6 +5,7 @@ class JobPosting < ApplicationRecord
   has_one_attached :header
   has_rich_text :content
 
+  validate :header, :validate_header
   validates :title, :content, presence: true
   validates :title, length: { maximum: 40 }
 
@@ -30,5 +31,19 @@ class JobPosting < ApplicationRecord
 
   def thumbnail
     header.variant(resize_to_fill: [1000, 300]).processed
+  end
+
+  private
+
+  def validate_header
+    return unless header.attached?
+
+    if !header.content_type.in?(%(image/jpeg image/jpg image/png))
+      self.header = nil
+      errors.add(:header, 'には、.jpeg, .jpg, .png のみ添付できます。')
+    elsif header.blob.byte_size > 10.megabytes
+      self.header = nil
+      errors.add(:header, 'は10MB以下のみ添付できます。')
+    end
   end
 end
