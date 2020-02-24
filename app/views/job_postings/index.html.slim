@@ -31,6 +31,4 @@ h4
       p お探しの条件に該当する結果が見つかりませんでした。
   = paginate @job_postings
 - if job_offerer_signed_in?
-  .fixed-action-btn
-    = link_to new_job_posting_path, class: 'btn-floating btn-large' do
-      i.large.material-icons create
+  = render 'shared/post_button'

@@ -46,3 +46,5 @@
           = link_to '求人一覧を見る', job_postings_path, class: 'blue-text'
 - else  
   = render 'top'
+- if job_offerer_signed_in?
+  = render 'shared/post_button'
