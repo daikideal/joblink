@@ -14,7 +14,10 @@ html
     - else  
       = render 'layouts/header'
     = render 'shared/toast'
-    .container
+    - if top?
       = yield
+    - else
+      .container
+        = yield
     - unless room?
       = render 'layouts/footer'
