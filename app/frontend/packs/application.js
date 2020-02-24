@@ -8,10 +8,10 @@ import 'materialize-css/dist/js/materialize'
 
 import '../stylesheets/actiontext'
 
+require("jquery")
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
-require("jquery")
 
 require("custom/forms")
 require("custom/home")
