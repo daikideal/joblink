@@ -21,7 +21,7 @@
         i.material-icons check_circle
     p
       = @profile.job_seeker.email
-  blockquote
+  h6
     = @profile.bio
   .row
     - @profile.tag_list.each do |tag|
