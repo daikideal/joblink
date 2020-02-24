@@ -27,7 +27,6 @@ gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'slim-rails'
-gem 'dotenv-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'

@@ -2,15 +2,23 @@ ja:
   activerecord:
     attributes:
       job_offerer_profile:
+        avatar: アバター
         first_name: 名
         last_name: 姓
         first_name_furigana: 名(ふりがな)
         last_name_furigana: 姓(ふりがな)
       job_seeker_profile:
+        avatar: アバター
         first_name: 名
         last_name: 姓
         first_name_furigana: 名(ふりがな)
         last_name_furigana: 姓(ふりがな)
+      job_posting:
+        header: ヘッダー
+        title: タイトル
+        content: 本文
+      resume:
+        content: 本文
   views:
     pagination:
       truncate: ...

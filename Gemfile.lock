@@ -104,10 +104,6 @@ GEM
       devise (>= 4.6)
     devise-i18n-views (0.3.7)
     diff-lcs (1.3)
-    dotenv (2.7.5)
-    dotenv-rails (2.7.5)
-      dotenv (= 2.7.5)
-      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -334,7 +330,6 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
-  dotenv-rails
   factory_bot_rails
   html2slim
   image_processing (~> 1.2)

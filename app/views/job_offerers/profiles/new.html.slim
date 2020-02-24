@@ -1,52 +1,7 @@
 h3
   | プロフィールの登録
-= form_with model: @profile, url: job_offerer_profile_path,  local: true do |f|
-  = render 'layouts/error_messages', model: f.object
-  .row.valign-wrapper
-    .col.s6
-      .center
-        - if @profile.avatar.attached?
-          = image_tag @profile.avatar.variant(resize_to_fill: [200,200]), id: :avatar_prev, class: 'circle responsive-img'
-        - else
-          = image_tag '/default_avatar.png', id: :avatar_prev, class: 'circle responsive-img', size: '200x200'
-    .file-field.input-field.col.s6
-      .btn 
-        span アバター
-        = f.file_field :avatar, id: :avatar_img
-      .file-path-wrapper
-        = f.text_field :file_path, class: 'file-path validate'
-  .row
-    .input-field.col.s6
-      = f.label '姓'
-      = f.text_field :last_name, autofocus: true
-      span.helper-text
-        | *必須項目
-    .input-field.col.s6
-      = f.label '名'
-      = f.text_field :first_name
-      span.helper-text
-        | *必須項目
-  .row
-    .input-field.col.s6
-      = f.label '姓(ふりがな)'
-      = f.text_field :last_name_furigana
-      span.helper-text
-        | *必須項目
-    .input-field.col.s6
-      = f.label '名(ふりがな)'
-      = f.text_field :first_name_furigana
-      span.helper-text
-        | *必須項目
-  .row
-    .input-field.col.s12
-      = f.label '自己紹介'
-      = f.text_area :bio, class: 'materialize-textarea'
-  .row
-    .input-field.col.s12
-      = f.label 'タグ'
-      = f.text_field :tag_list, value: @profile.tag_list.join(',' + ' ')
-      span.helper-text
-        | *コンマまたはスペース区切りで複数入力可能
+= form_with model: @profile, url: job_offerer_profile_path, local: true do |f|
+  = render 'form', f: f
   .row
     .actions
       = f.submit '登録', class: 'btn right'

@@ -15,15 +15,13 @@
   .col.s10
     h4
       ruby
-        rb
-          = @profile.full_name
-        rt
-          = @profile.full_name_furigana
+        rb = @profile.full_name
+        rt = @profile.full_name_furigana
       - if correct_user? && @job_seeker.admin?
         i.material-icons check_circle
     p
       = @profile.job_seeker.email
-  blockquote
+  h6
     = @profile.bio
   .row
     - @profile.tag_list.each do |tag|
@@ -37,7 +35,7 @@
         = link_to 'ブックマーク', "#bookmark"
   #resume.col.s12
     .section
-      = render 'job_seekers/resumes/sheet'
+      = render 'job_seekers/resumes/resume'
   #bookmark.col.s12
     - if @job_seeker.bookmarks.present?  
       = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings

@@ -5,6 +5,7 @@ class JobOfferers::ProfilesController < ApplicationController
   before_action :profile_exists_already, only: %i[new create]
   before_action :require_correct_user, only: %i[edit update]
   before_action :require_admin, only: %i[destroy]
+  before_action :check_guest, only: %i[edit update]
 
   def index
     popular_tags
@@ -14,6 +15,7 @@ class JobOfferers::ProfilesController < ApplicationController
   def show
     @job_offerer = JobOfferer.find(params[:id])
     @profile = @job_offerer.profile
+    confirm_profile
   end
 
   def new
@@ -59,5 +61,12 @@ class JobOfferers::ProfilesController < ApplicationController
       :avatar,
       :tag_list
     )
+  end
+
+  def check_guest
+    @profile = JobOffererProfile.find_by(job_offerer_id: params[:job_offerer_id])
+    return unless @profile.job_offerer.email == 'test_offerer@joblink.com'
+
+    redirect_back(fallback_location: root_path, alert: 'ゲストユーザーのプロフィールは変更できません')
   end
 end

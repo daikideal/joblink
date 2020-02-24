@@ -7,14 +7,16 @@ import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
 
 import '../stylesheets/actiontext'
+import '../stylesheets/home.scss'
 
+require("jquery")
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
-require("jquery")
 
 require("custom/forms")
-require("custom/navbar")
+require("custom/home")
+require("custom/nav")
 require("custom/room")
 require("custom/tabs")
 require("trix")

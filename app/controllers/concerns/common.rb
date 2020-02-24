@@ -1,6 +1,18 @@
 module Common
   extend ActiveSupport::Concern
 
+  def confirm_profile
+    return unless @profile.nil?
+
+    if job_offerer_signed_in?
+      redirect_to new_job_offerer_profile_path(@job_offerer)
+      flash[:notice] = 'プロフィールの設定が必要です'
+    elsif job_seeker_signed_in?
+      redirect_to new_job_seeker_profile_path(@job_seeker)
+      flash[:notice] = 'プロフィールの設定が必要です'
+    end
+  end
+
   def popular_tags
     @tags = ActsAsTaggableOn::Tag.most_used(12)
   end

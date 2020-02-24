@@ -31,7 +31,4 @@ h4
       p お探しの条件に該当する結果が見つかりませんでした。
   = paginate @job_postings
 - if job_offerer_signed_in?
-  .section
-    .row
-      .right
-        = link_to '求人を投稿する', new_job_posting_path, class: 'btn'
+  = render 'shared/post_button'

@@ -1,18 +1,17 @@
-table.highlight
-  tbody
-    - job_postings.each do |job_posting|
-      tr
-        td
-          = link_to(job_posting_path(job_posting), class: 'collection-item black-text') do
-            - if job_posting.header.attached?
-              = image_tag job_posting.thumbnail, class: 'responsive-img'
-            .row
-              .col.s10
-                h5
-                  = job_posting.title
-              .col.s2
-                .right
-                  = render 'bookmarks/bookmark', job_posting: job_posting
-            - job_posting.tag_list.each do |tag|
-              span.chip
-                = tag
+- job_postings.each do |job_posting|
+  .card
+    = link_to(job_posting_path(job_posting)) do
+      .card-image
+        - if job_posting.header.attached?
+          = image_tag job_posting.thumbnail, class: 'responsive-img'
+        - else
+          = image_tag '/no_image.png', size: '1000x400'
+        .card-title
+          = render 'bookmarks/bookmark', job_posting: job_posting
+    = link_to(job_posting_path(job_posting)) do
+      .card-content
+        h5.black-text
+          = job_posting.title
+        - job_posting.tag_list.each do |tag|
+          span.chip
+            = tag
