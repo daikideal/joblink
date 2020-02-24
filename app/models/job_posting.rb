@@ -30,7 +30,7 @@ class JobPosting < ApplicationRecord
   end
 
   def thumbnail
-    header.variant(resize_to_fill: [1000, 300]).processed
+    header.variant(resize_to_fill: [1000, 400]).processed
   end
 
   private
