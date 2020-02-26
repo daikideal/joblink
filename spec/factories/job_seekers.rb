@@ -4,10 +4,10 @@ FactoryBot.define do
     password { 'password' }
     confirmed_at { Time.now }
 
-    trait :unconfirmed_job_seeker do
-      email { 'unconfirmed@joblink.com' }
+    trait :unconfirmed do
+      email { '' }
+      unconfirmed_email { 'unconfirmed@joblink.com' }
       password { 'password' }
-      confirmed_at { nil }
     end
   end
 end
