@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :message do
-    content { "MyText" }
+    association :room
+    content { 'テストデータ' }
   end
 end
