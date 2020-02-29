@@ -6,5 +6,17 @@ FactoryBot.define do
     first_name_furigana { 'りゅうが' }
     last_name_furigana { 'ばんじょう' }
     bio { 'a' * 160 }
+
+    trait :invalid do
+      first_name { nil }
+    end
+
+    trait :another do
+      first_name { '一海' }
+      last_name { '猿渡' }
+      first_name_furigana { 'かずみ' }
+      last_name_furigana { 'さわたり' }
+      bio { 'b' * 160 }
+    end
   end
 end
