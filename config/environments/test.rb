@@ -36,6 +36,8 @@ Rails.application.configure do
   # For Active Job Inline
   config.active_job.queue_adapter = :inline
 
+  config.action_mailer.default_url_options = { host: 'joblink.com' }
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
