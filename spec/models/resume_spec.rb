@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Resume, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーション' do
+    it '本文があれば有効であること' do
+      expect(build(:resume)).to be_valid
+    end
+
+    it '本文がなければ無効であること' do
+      expect(build(:resume, content: nil)).to_not be_valid
+    end
+  end
 end
