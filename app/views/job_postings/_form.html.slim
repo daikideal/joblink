@@ -15,11 +15,11 @@
       | *画像を選択するとプレビューを表示します
 .row
   .input-field
-    = f.label 'タイトル'
+    = f.label :title
     = f.text_field :title
 .row
   .input-field 
-    = f.label 'タグ'
+    = f.label :tag_list
     = f.text_field :tag_list, value: @job_posting.tag_list.join(',' + ' ')
     span.helper-text
       | *コンマまたはスペース区切りで複数入力可能

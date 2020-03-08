@@ -14,33 +14,33 @@
       = f.text_field :file_path, class: 'file-path validate'
 .row
   .input-field.col.s6
-    = f.label '姓'
+    = f.label :last_name
     = f.text_field :last_name
     span.helper-text
       | *必須項目
   .input-field.col.s6
-    = f.label '名'
+    = f.label :first_name
     = f.text_field :first_name
     span.helper-text
       | *必須項目
 .row
   .input-field.col.s6
-    = f.label '姓(ふりがな)'
+    = f.label :last_name_furigana
     = f.text_field :last_name_furigana
     span.helper-text
       | *必須項目
   .input-field.col.s6
-    = f.label '名(ふりがな)'
+    = f.label :first_name_furigana
     = f.text_field :first_name_furigana
     span.helper-text
       | *必須項目
 .row
   .input-field.col.s12
-    = f.label '自己紹介'
+    = f.label :bio
     = f.text_area :bio, class: 'materialize-textarea character_limit', data: {length: '160'}
 .row
   .input-field.col.s12
-    = f.label 'タグ'
+    = f.label :tag_list
     = f.text_field :tag_list, value: @profile.tag_list.join(',' + ' ')
     span.helper-text
       | *コンマまたはスペース区切りで複数入力可能
