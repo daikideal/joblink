@@ -15,6 +15,10 @@ COPY Gemfile.lock /joblink/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
 COPY . /joblink
+RUN mkdir -p tmp/sockets
+
+VOLUME /joblink/public
+VOLUME /joblink/tmp
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
