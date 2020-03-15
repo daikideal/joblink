@@ -5,25 +5,13 @@ services:
     ports:
       - "4444:4444"
   db: 
-    image: mysql
-    command: >
-      --default-authentication-plugin=mysql_native_password
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
+    build: containers/mysql
     environment: 
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      TZ: Asia/Tokyo
+      TZ: ${TZ}
     ports: 
       - "3306:3306"
-  nginx: 
-    build: containers/nginx
-    ports: 
-      - "80:80"
-    volumes: 
-      - web
-    depends_on: 
-      - web
-  web: 
+  app: 
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes: 
@@ -36,3 +24,11 @@ services:
     env_file: .env
     stdin_open: true
     tty: true
+  web: 
+    build: containers/nginx
+    ports: 
+      - "80:80"
+    volumes: 
+      - app
+    depends_on: 
+      - app
