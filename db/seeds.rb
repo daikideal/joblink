@@ -77,3 +77,48 @@ end
 25.downto(19) do |n|
   Bookmark.create!(job_seeker_id: n, job_posting_id: n - 5)
 end
+
+message_from_seeker = %w[
+  はじめまして！
+  お忙しいところ失礼します。
+  気になったのでメッセージ送らせていただきました！
+]
+message_from_offerer = %w[
+  プロフィールを見て、気になったのでお声かけさせていただきました！
+  ご興味ありましたら返信いただけますと幸いです
+  弊社で一緒に働きませんか？
+]
+
+room = Room.create!
+room.entries.create!(
+  job_offerer_id: 1,
+  job_seeker_id: 1
+)
+JobOfferer.find(1).messages.create!(
+  room_id: 1,
+  content: 'よろしくお願いします！'
+)
+
+3.times do |n|
+  room = Room.create!
+  room.entries.create!(
+    job_offerer_id: 3 + n,
+    job_seeker_id: 1
+  )
+  JobOfferer.find(3 + n).messages.create!(
+    room_id: 2 + n,
+    content: message_from_offerer[n]
+  )
+end
+
+3.times do |n|
+  room = Room.create!
+  room.entries.create!(
+    job_offerer_id: 2,
+    job_seeker_id: 2 + n
+  )
+  JobSeeker.find(2 + n).messages.create!(
+    room_id: 5 + n,
+    content: message_from_seeker[n]
+  )
+end
