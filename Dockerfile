@@ -5,6 +5,7 @@ RUN apt-get update -qq \
     nodejs \
     yarn \
     chromium-driver \
+    vim \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
