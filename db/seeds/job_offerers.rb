@@ -8,7 +8,7 @@ admin.create_profile!(
   first_name: ENV['ADMIN_FIRST_NAME'], last_name: ENV['ADMIN_LAST_NAME'],
   first_name_furigana: ENV['ADMIN_FIRST_NAME_FURIGANA'],
   last_name_furigana: ENV['ADMIN_LAST_NAME_FURIGANA'],
-  bio: 'Hello', tag_list: ['web系']
+  bio: 'Welcome to JOBLINK!', tag_list: ['web系']
 )
 admin.profile.avatar.attach(
   io: File.open('db/sample/avatar/admin.jpeg'), filename: 'admin.jpeg'
