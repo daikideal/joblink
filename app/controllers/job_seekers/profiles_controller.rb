@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JobSeekers::ProfilesController < ApplicationController
   include Common
 

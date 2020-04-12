@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def home
     @rooms = current_user.rooms.active.limit(3) if current_user.present?
