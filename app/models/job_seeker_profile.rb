@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JobSeekerProfile < ApplicationRecord
   belongs_to :job_seeker
   has_one_attached :avatar

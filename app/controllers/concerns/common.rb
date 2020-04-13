@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Common
   extend ActiveSupport::Concern
 
@@ -36,7 +38,7 @@ module Common
   end
 
   def profile_exists_already
-    return redirect_to root_url, alert: '操作が無効です' unless current_user.profile.nil?
+    redirect_to root_url, alert: '操作が無効です' unless current_user.profile.nil?
   end
 
   def require_correct_user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUserRefToMessages < ActiveRecord::Migration[6.0]
   def change
     add_reference :messages, :job_offerer, foreign_key: true

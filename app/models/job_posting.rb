@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JobPosting < ApplicationRecord
   belongs_to :job_offerer
   has_many :bookmarks, dependent: :destroy
