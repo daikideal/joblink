@@ -38,3 +38,17 @@
 trix-editor {
   min-height: 30em;
 }
+
+.trix-editor {
+  ul:not(.browser-default) > li {
+    list-style-type: disc;
+    display: list-item;
+  }
+}
+
+.trix-content {
+  ul:not(.browser-default) > li {
+    list-style-type: disc;
+    display: list-item;
+  }
+}
