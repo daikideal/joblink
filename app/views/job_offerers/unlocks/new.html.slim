@@ -1,0 +1,13 @@
+.container
+  h2
+    = t('.resend_unlock_instructions')
+  = form_with model: @job_offerer, url: job_offerer_unlock_path, local: true do |f|
+    = devise_error_messages!
+    .row
+      .input-field
+        = f.label :email
+        = f.email_field :email, autocomplete: :email
+    .row
+      .actions
+        = f.submit t('.action'), class: 'btn right'
+  = render "job_offerers/shared/links"

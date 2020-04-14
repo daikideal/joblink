@@ -1,0 +1,23 @@
+.container
+  h2
+    = t('.change_your_password')
+  = form_with model: @job_offerer, url: job_offerer_password_path, method: :put, local: true do |f|
+    = devise_error_messages!
+    = f.hidden_field :reset_password_token
+    .row
+      .input-field
+        = f.label :password, t('.new_password')
+        = f.password_field :password, autocomplete: :password
+        span.helper-text
+          - if @minimum_password_length
+            | *パスワードは
+            = @minimum_password_length
+            | 文字以上
+    .row
+      .input-field
+        = f.label :password_confirmation, t('.confirm_new_password')
+        = f.password_field :password_confirmation, autocomplete: :password_confirmation
+    .row
+      .actions
+        = f.submit t('.change_my_password'), class: 'btn right'
+  = render "job_offerers/shared/links"

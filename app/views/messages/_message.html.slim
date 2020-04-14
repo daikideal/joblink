@@ -1,0 +1,12 @@
+tr
+  td
+    - if message.job_offerer
+      strong = message.job_offerer.profile.full_name
+      .right
+        = message.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
+      p = simple_format(message.content)
+    - elsif message.job_seeker
+      strong = message.job_seeker.profile.full_name
+      .right
+        = message.updated_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
+      p = simple_format(message.content)

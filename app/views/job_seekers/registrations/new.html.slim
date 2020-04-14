@@ -1,0 +1,29 @@
+.container
+  h2
+    | 求人者
+    =< t('.sign_up')
+  = form_with model: @job_seeker, local: true do |f|
+    = devise_error_messages!
+    .row
+      .input-field
+        = f.label :email
+        = f.email_field :email, autocomplete: :email
+    .row
+      .input-field
+        = f.label :password
+        = f.password_field :password, autocomplete: :password
+        - if @minimum_password_length
+          span.helper-text
+            | *パスワードは
+            = @minimum_password_length
+            | 文字以上
+    .row
+      .input-field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: :password_confirmation
+    .row
+      .actions
+        = f.submit t('.sign_up'), class: 'btn right'
+  .row
+    = link_to 'かんたんログイン', job_seekers_guest_sign_in_path, method: :post, class: 'btn right'
+  = render "job_seekers/shared/links"

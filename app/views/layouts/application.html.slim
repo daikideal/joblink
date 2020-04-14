@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title
+      | Joblink
+    = csrf_meta_tags
+    = csp_meta_tag
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    link[href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"]
+  body
+    - if room?
+      = render 'layouts/room_header'
+    - else  
+      = render 'layouts/header'
+    = render 'shared/toast'
+    - if top?
+      = yield
+    - else
+      .container
+        = yield
+    - unless room?
+      = render 'layouts/footer'

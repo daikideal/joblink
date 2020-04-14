@@ -1,0 +1,50 @@
+.navbar-fixed
+  nav
+    .nav-wrapper
+      = link_to "JOBLINK", root_path, class: "brand-logo"
+      a.sidenav-trigger.right href='#' data-target='slide-out'
+        i.material-icons menu
+      ul#nav-mobile.right.hide-on-med-and-down
+        li = link_to job_postings_path
+          i.material-icons.left description
+          | 求人一覧
+        li = link_to job_offerers_path
+          i.material-icons.left people
+          | 求人者一覧
+        li = link_to job_seekers_path
+          i.material-icons.left people_outline
+          | 求職者一覧
+        - if user_signed_in?
+          li = link_to rooms_path
+            i.material-icons.left chat
+            | トーク
+          - if job_offerer_signed_in?
+            li = link_to job_offerer_path(current_job_offerer)
+              i.material-icons.left account_circle
+              | マイページ
+            li = link_to destroy_job_offerer_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+              i.material-icons.left exit_to_app
+              | ログアウト
+          -elsif job_seeker_signed_in?
+            li = link_to job_seeker_path(current_job_seeker)
+              i.material-icons.left account_circle
+              | マイページ
+            li = link_to destroy_job_seeker_session_path, method: :delete, data: {confirm: 'ログアウトしますか？'}
+              i.material-icons.left exit_to_app
+              | ログアウト
+        - else
+          li 
+            a.dropdown-trigger href='#' data-target='dropdown-job-offerer' 
+              | 求人者の方はこちら
+              i.material-icons.right arrow_drop_down
+          li 
+            a.dropdown-trigger href='#' data-target='dropdown-job-seeker' 
+              | 求職者の方はこちら
+              i.material-icons.right arrow_drop_down
+ul#dropdown-job-offerer.dropdown-content
+  li = link_to "アカウント登録", new_job_offerer_registration_path
+  li = link_to "ログイン", new_job_offerer_session_path
+ul#dropdown-job-seeker.dropdown-content
+  li = link_to "アカウント登録", new_job_seeker_registration_path
+  li = link_to "ログイン", new_job_seeker_session_path
+= render 'shared/sidenav'

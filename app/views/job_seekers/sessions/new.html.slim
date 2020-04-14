@@ -1,0 +1,26 @@
+.container
+  h2
+    | 求人者
+    =< t('.sign_in')
+  = form_with model: @job_seeker, url: job_seeker_session_path, local: true do |f|
+    .row
+      .input-field
+        = f.label :email
+        = f.email_field :email, autocomplete: :email
+    .row
+      .input-field
+        = f.label :password
+        = f.password_field :password, autocomplete: :password
+    - if devise_mapping.rememberable?
+      .row
+        .right
+          label
+            = f.check_box :remember_me
+            span
+              = f.label :remember_me
+    .row
+      .actions
+        = f.submit t('.sign_in'), class: 'btn right'
+  .row
+    = link_to 'かんたんログイン', job_seekers_guest_sign_in_path, method: :post, class: 'btn right'
+  = render "job_seekers/shared/links"

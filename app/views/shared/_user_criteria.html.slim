@@ -1,0 +1,9 @@
+.row
+  - if params[:q].present? && params[:q][:profile_cont].present?
+    = params[:q][:profile_cont]
+    |  の検索結果:
+  - elsif params[:tag_name].present?
+    = params[:tag_name]
+    |  の検索結果:
+  - else
+    | 全件表示:

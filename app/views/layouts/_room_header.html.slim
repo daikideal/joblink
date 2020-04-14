@@ -1,0 +1,20 @@
+.navbar-fixed
+  nav
+    .nav-wrapper
+      ul
+        li 
+          = link_to rooms_path, class: 'btn-flat' do
+            i.material-icons.white-text chevron_left
+        li
+          - if both_present?
+            - if job_offerer_signed_in?  
+              = link_to job_seeker_path(@room.job_seeker.ids) do
+                = @room.job_seeker.first.profile.full_name
+            - elsif job_seeker_signed_in?
+              = link_to job_offerer_path(@room.job_offerer.ids) do
+                = @room.job_offerer.first.profile.full_name
+          - else
+            | 相手が退出しています
+        li.right
+          = link_to room_entry_path(@room), method: :delete, data: {confirm: 'このルームから退出しますか?このルームでの会話は見られなくなります。'}, class: 'btn-flat' do
+            i.material-icons.white-text exit_to_app

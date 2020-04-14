@@ -1,0 +1,16 @@
+.section
+  ul.collapsible
+    li
+      .collapsible-header
+        i.material-icons help_outline
+        | 何を書けばいいかわかりませんか?
+      .collapsible-body
+        p 
+          |何をどう書けばいいかわからない時はこれらの項目やフォーマットを参考にするのもいいでしょう。
+        ul
+          li = link_to '英文履歴書の書き方マニュアル', 'https://tenshoku.mynavi.jp/global/knowhow/resume', target: :_blank
+          li = link_to 'スマートな英文履歴書の書き方', 'https://ten-navi.com/hacks/resume-20-4813', target: :_blank
+        p
+          | 決まった書き方はありません。<br>
+          | あなたを表現できる経歴書を採用担当者に見せましょう。
+    = render 'shared/action_text_help'

@@ -1,0 +1,35 @@
+.section
+  .row
+    .center
+      - if @job_posting.header.attached?
+        = image_tag @job_posting.shaped_header, class: 'responsive-img'
+      - else
+        = image_tag '/no_image.png', class: 'responsive-img'
+  .row
+    h4
+      = @job_posting.title
+  .row.valign-wrapper
+    .col.s10
+      .valign-wrapper
+        = link_to job_offerer_path(@job_posting.job_offerer) do
+          - if @job_posting.job_offerer.profile.avatar.attached?
+            = image_tag @job_posting.job_offerer.profile.avatar.variant(resize_to_fill: [50, 50]), class: 'circle'
+          - else
+            = image_tag '/default_avatar.png', class: 'circle', size: '50x50'
+        | &nbsp
+        = link_to @job_posting.job_offerer.profile.full_name, job_offerer_path(@job_posting.job_offerer), class: 'black-text'
+    .col.s2
+      .right
+        = render 'bookmarks/bookmark', job_posting: @job_posting
+  .row
+    - @job_posting.tag_list.each do |tag|
+      = link_to tag, job_postings_path(tag_name: tag), class: 'chip'
+  .row
+    p
+      == @job_posting.content
+.section
+  - if @job_posting.job_offerer == current_job_offerer
+    .row
+      .right
+        = link_to '編集', edit_job_posting_path, class: 'btn'
+        =< link_to '削除', job_posting_path, data: { confirm: "この求人を削除しますか?" }, method: :delete, class: 'btn'

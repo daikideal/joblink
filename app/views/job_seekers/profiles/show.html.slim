@@ -1,0 +1,53 @@
+.section
+  .row
+    - if @profile.avatar.attached?
+      = image_tag @profile.shaped_avatar, class: 'circle responsive-img'
+    - else
+      = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
+  .col.s2.offset-s2.right
+    - if correct_user?
+      = link_to '編集', edit_job_seeker_profile_path(@job_seeker), class: 'btn'
+    - if job_offerer_signed_in?
+      - if current_job_offerer.rooms.find_by(id: @job_seeker.rooms)
+        =< link_to 'メッセージ', room_path(current_job_offerer.rooms.find_by(id: @job_seeker.rooms)), class: 'btn'
+      - else
+        =< link_to 'メッセージ', rooms_path(entry: {job_offerer_id: current_job_offerer, job_seeker_id: @job_seeker}), method: :post, class: 'btn'
+  .col.s10
+    h4
+      ruby
+        rb = @profile.full_name
+        rt = @profile.full_name_furigana
+      - if correct_user? && @job_seeker.admin?
+        i.material-icons check_circle
+    p
+      = @profile.job_seeker.email
+  h6
+    = @profile.bio
+  .row
+    - @profile.tag_list.each do |tag|
+      = link_to tag, job_seekers_path(tag_name: tag), class: 'chip'
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s6
+        = link_to '経歴書', "#resume"
+      li.tab.col.s6
+        = link_to 'ブックマーク', "#bookmark"
+  #resume.col.s12
+    .section
+      = render 'job_seekers/resumes/resume'
+  #bookmark.col.s12
+    - if @job_seeker.bookmarks.present?  
+      = render 'job_postings/list', job_postings: @job_seeker.bookmarked_postings
+    - else
+      .section
+        p 求人をブックマークしていません。
+        = link_to '求人を探す', job_postings_path
+- if user_signed_in?
+  .section
+    - if correct_user?
+      .row
+        = link_to 'アカウント設定', edit_job_seeker_registration_path
+    - if current_user.admin? && @job_seeker != current_user
+      .row
+        = link_to 'この求職者を削除', job_seeker_path(@job_seeker), data: { confirm: "この求職者を削除しますか?" }, method: :delete

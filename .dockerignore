@@ -1,0 +1,7 @@
+.git
+.gitignore
+.rspec
+containers
+log
+node_modules
+tmp

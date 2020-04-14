@@ -1,0 +1,14 @@
+p
+  | こんにちは、 
+  = @email
+  |  様
+- if @resource.try(:unconfirmed_email?)
+  p
+    = t('.instruction')
+  p 
+    = @resource.unconfirmed_email
+- else
+  p
+    = t('.instruction_2')
+  p
+    = @resource.email

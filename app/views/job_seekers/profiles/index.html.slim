@@ -1,0 +1,37 @@
+h4
+  | 求職者
+.row
+  = search_form_for @q, url: job_seekers_path do |f|
+    .container
+      .input-field.col.s10
+        = f.text_field :profile_cont, placeholder: 'キーワードで求職者を検索'
+      .input-field.col.s2
+        = button_tag class: 'btn-flat'
+          i.material-icons search
+.row
+  .container
+    | 人気のタグ: 
+    - @tags.each do |tag|
+      = link_to tag, job_seekers_path(tag_name: tag.name), class: 'chip'
+.divider
+.section
+  = render 'shared/user_criteria'
+  - if @profiles.present?
+    .collection
+      - @profiles.each do |profile|
+        = link_to(job_seeker_path(profile.job_seeker), class: 'collection-item avatar black-text') do
+          - if profile.avatar.attached?
+            = image_tag profile.shaped_avatar, class: 'circle'
+          - else 
+            = image_tag '/default_avatar.png', class: 'circle'
+          span.title
+            = profile.full_name
+          p
+            = profile.bio
+          - profile.tag_list.each do |tag|
+            span.chip
+              = tag
+  - else
+    .row
+      p お探しの条件に該当する結果が見つかりませんでした。
+  = paginate @profiles

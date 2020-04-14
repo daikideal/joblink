@@ -1,0 +1,51 @@
+.section
+  .row
+    - if @profile.avatar.attached?
+      = image_tag @profile.shaped_avatar, class: 'circle responsive-img'
+    - else
+      = image_tag '/default_avatar.png', class: 'circle responsive-img', size: '200x200'
+  .col.s2.offset-s2.right
+    - if correct_user?
+      = link_to '編集', edit_job_offerer_profile_path(@job_offerer), class: 'btn'
+    - if job_seeker_signed_in?
+      - if current_job_seeker.rooms.find_by(id: @job_offerer.rooms)
+        =< link_to 'メッセージ', room_path(current_job_seeker.rooms.find_by(id: @job_offerer.rooms)), class: 'btn'
+      - else
+        =< link_to 'メッセージ', rooms_path(entry: {job_seeker_id: current_job_seeker, job_offerer_id: @job_offerer}), method: :post, class: 'btn'
+  .col.s10
+    h4
+      ruby
+        rb = @profile.full_name
+        rt = @profile.full_name_furigana
+      - if correct_user? && @job_offerer.admin?
+        i.material-icons check_circle
+    p
+      = @profile.job_offerer.email
+  h6
+    = @profile.bio
+  .row
+    - @profile.tag_list.each do |tag|
+      = link_to tag, job_offerers_path(tag_name: tag), class: 'chip'
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s12 
+        = link_to "投稿した求人", "#job_postings"
+  #job_postings.col.s12
+    - if @job_offerer.job_postings.present?  
+      = render 'job_postings/list', job_postings: @job_offerer.job_postings
+    - else
+      .section
+        p 求人を投稿していません。
+        - if correct_user?
+          = link_to '求人を投稿する', new_job_posting_path
+- if user_signed_in?
+  .section
+    - if correct_user?
+      .row
+        = link_to 'アカウント設定', edit_job_offerer_registration_path
+    - if current_user.admin? && @job_offerer != current_user
+      .row
+        = link_to 'この求人者を削除', job_offerer_path(@job_offerer), data: { confirm: "この求人者を削除しますか?" }, method: :delete
+- if job_offerer_signed_in? && correct_user?
+  = render 'shared/post_button'

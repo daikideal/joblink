@@ -1,0 +1,46 @@
+= render 'shared/error_messages', model: f.object
+.row.valign-wrapper
+  .col.s6
+    .center
+      - if @profile.avatar.attached?
+        = image_tag @profile.avatar.variant(resize_to_fill: [200,200]), id: :avatar_prev, class: 'circle responsive-img'
+      - else
+        = image_tag '/default_avatar.png', id: :avatar_prev, class: 'circle responsive-img', size: '200x200'
+  .file-field.input-field.col.s6
+    .btn 
+      span アバター
+      = f.file_field :avatar, id: :avatar_img
+    .file-path-wrapper
+      = f.text_field :file_path, class: 'file-path validate'
+.row
+  .input-field.col.s6
+    = f.label :last_name
+    = f.text_field :last_name
+    span.helper-text
+      | *必須項目
+  .input-field.col.s6
+    = f.label :first_name
+    = f.text_field :first_name
+    span.helper-text
+      | *必須項目
+.row
+  .input-field.col.s6
+    = f.label :last_name_furigana
+    = f.text_field :last_name_furigana
+    span.helper-text
+      | *必須項目
+  .input-field.col.s6
+    = f.label :first_name_furigana
+    = f.text_field :first_name_furigana
+    span.helper-text
+      | *必須項目
+.row
+  .input-field.col.s12
+    = f.label :bio
+    = f.text_area :bio, class: 'materialize-textarea character_limit', data: {length: '160'}
+.row
+  .input-field.col.s12
+    = f.label :tag_list
+    = f.text_field :tag_list, value: @profile.tag_list.join(',' + ' ')
+    span.helper-text
+      | *コンマまたはスペース区切りで複数入力可能

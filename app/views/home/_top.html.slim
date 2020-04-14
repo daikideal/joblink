@@ -1,0 +1,46 @@
+.parallax-container
+  .parallax
+    = image_tag '/top.jpg'
+h1.center-align
+  | JOBLINK
+p.center-align
+  | JOBLINKは求人者と求職者がよりカジュアルにつながるためのSNSです。
+.container
+  .section
+    .row
+      .center-align
+        .col.s4
+          .section
+            i.material-icons.large search
+            .left-align
+              h6 条件やキーワードで求人や求職者を検索しましょう。
+              h6 お気に入りの求人はブックマークすることもできます。
+        .col.s4
+          .section
+            i.material-icons.large chat
+            .left-align
+              h6 探している条件に合った相手が見つかったら、チャットやメールでコンタクトをとりましょう。
+              p 
+                | *チャット機能の利用にはログインが必要です。
+        .col.s4
+          .section
+            i.material-icons.large assignment_turned_in
+            .left-align
+              h6 本採用のプロセスにつなげるのも、この場で採用もOK。
+              h6 JOBLINKを活用して、ベストマッチな採用・就職を生み出してください！
+  .row
+    .center-align
+      .row
+        .col.s12
+          = link_to '求人を見る！', job_postings_path, class: 'btn-large'
+      .row
+        .divider
+      .row
+        .col.s6
+          p 求人者の方はこちらから
+          = link_to "アカウント登録", new_job_offerer_registration_path, class: 'btn'
+          p = link_to "ログイン", new_job_offerer_session_path
+        .col.s6
+          p 求職者の方はこちらから
+          = link_to 'アカウント登録', new_job_seeker_registration_path, class: 'btn'
+          p  = link_to "ログイン", new_job_seeker_session_path

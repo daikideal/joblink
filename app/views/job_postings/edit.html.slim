@@ -1,0 +1,8 @@
+h3
+  | 求人情報の編集
+= form_with model: @job_posting, local: true do |f|
+  = render 'form', f: f
+  .row
+    .actions
+      = f.submit '更新', class: 'btn right'
+= render 'help'

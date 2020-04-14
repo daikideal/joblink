@@ -1,0 +1,59 @@
+.container
+  .section
+    h2
+      | アカウント設定
+    = form_with model: @job_seeker, url: job_seeker_registration_path, local: true do |f|
+      = devise_error_messages!
+      .row
+        .input-field
+          = f.label :email
+          = f.email_field :email, autocomplete: :email
+          span.helper-text
+            = t('.leave_blank_if_you_don_t_want_to_change_it')
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        .row
+          .card-panel
+            .valign-wrapper
+              .col.s2
+                .center
+                  i.material-icons announcement
+              .col.s10
+                = t('.currently_waiting_confirmation_for_email') 
+                = resource.unconfirmed_email
+      .row
+        .input-field
+          = f.label :new_password
+          = f.password_field :new_password, autocomplete: :new_password
+          span.helper-text
+            = t('.leave_blank_if_you_don_t_want_to_change_it')
+            - if @minimum_password_length
+              br
+              | *パスワードは
+              = @minimum_password_length
+              | 文字以上
+      .row
+        .input-field
+          = f.label :new_password_confirmation
+          = f.password_field :new_password_confirmation, autocomplete: :new_password_confirmation
+      .row
+        .input-field
+          = f.label :current_password
+          = f.password_field :current_password, autocomplete: :current_password
+          span.helper-text
+            = t('.we_need_your_current_password_to_confirm_your_changes')
+      .row
+        .actions
+          = f.submit t('.update'), class: 'btn right'
+  .divider
+  .section
+    h3
+      = t('.cancel_my_account')
+    .row
+      p
+        = t('.unhappy')
+        br
+        | 以下のリンクからアカウントを削除できます。
+    .row
+      = link_to "退会する", job_seeker_registration_path, data: { confirm: t('.are_you_sure') }, method: :delete
+      p
+        | *削除したアカウントは完全に復元できなくなります
