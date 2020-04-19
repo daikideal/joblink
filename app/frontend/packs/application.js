@@ -15,7 +15,6 @@ require("@rails/activestorage").start()
 require("channels")
 
 require("custom/forms")
-require("custom/home")
 require("custom/nav")
 require("custom/room")
 require("custom/tabs")
