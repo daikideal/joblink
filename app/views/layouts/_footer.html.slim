@@ -6,6 +6,14 @@ footer.page-footer
           | JOBLINK
         p.grey-text.text-lighten-4
           | We will make connection between job & people
+      .col.l4.offset-12.s12
+        h5.white-text
+          | リンク
+        ul
+          li = link_to 'トップへ戻る', root_path, class: 'grey-text text-lighten-3'
+          li = link_to '求人一覧', job_postings_path, class: 'grey-text text-lighten-3'
+          li = link_to '求人者一覧', job_offerers_path, class: 'grey-text text-lighten-3'
+          li = link_to '求職者一覧', job_seekers_path, class: 'grey-text text-lighten-3'
   .footer-copyright
     .container
       | @2019 JOBLINK by daikideal
