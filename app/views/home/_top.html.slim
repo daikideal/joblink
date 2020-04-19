@@ -1,14 +1,30 @@
-.parallax-container
-  .parallax
-    = image_tag '/top.jpg'
-h1.center-align
-  | JOBLINK
-p.center-align
-  | JOBLINKは求人者と求職者がよりカジュアルにつながるためのSNSです。
-.container
-  .section
+#landing.section
+  #landing-content.container
+    .section
+      h1.center.white-text
+        | JOBLINK
+      p.center.white-text
+        | JOBLINKは求人者と求職者がよりカジュアルにつながるためのSNSです。
+    .section
+      .center
+        .row
+          .col.s12
+            = link_to '求人を探す', job_postings_path, class: 'btn-large'
+        .row
+          .col.s6
+            p.white-text
+              | 求人者の方はこちらから
+            = link_to "アカウント登録", new_job_offerer_registration_path, class: 'btn'
+            p = link_to "ログイン", new_job_offerer_session_path, class: 'white-text'
+          .col.s6
+            p.white-text
+              | 求職者の方はこちらから
+            = link_to 'アカウント登録', new_job_seeker_registration_path, class: 'btn'
+            p  = link_to "ログイン", new_job_seeker_session_path, class: 'white-text'
+.section
+  .container
     .row
-      .center-align
+      .center
         .col.s4
           .section
             i.material-icons.large search
@@ -28,19 +44,6 @@ p.center-align
             .left-align
               h6 本採用のプロセスにつなげるのも、この場で採用もOK。
               h6 JOBLINKを活用して、ベストマッチな採用・就職を生み出してください！
-  .row
-    .center-align
-      .row
-        .col.s12
-          = link_to '求人を見る！', job_postings_path, class: 'btn-large'
-      .row
-        .divider
-      .row
-        .col.s6
-          p 求人者の方はこちらから
-          = link_to "アカウント登録", new_job_offerer_registration_path, class: 'btn'
-          p = link_to "ログイン", new_job_offerer_session_path
-        .col.s6
-          p 求職者の方はこちらから
-          = link_to 'アカウント登録', new_job_seeker_registration_path, class: 'btn'
-          p  = link_to "ログイン", new_job_seeker_session_path
+    .row
+      h4.center
+        | JOBLINKでつながりましょう
