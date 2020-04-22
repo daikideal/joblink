@@ -7,7 +7,6 @@ import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
 
 import '../stylesheets/actiontext'
-import '../stylesheets/home.scss'
 
 require("jquery")
 require("@rails/ujs").start()
