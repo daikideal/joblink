@@ -1,26 +1,28 @@
-#landing.section
-  #landing-content.container
-    .section
-      h1.center.white-text
-        | JOBLINK
-      p.center.white-text
-        | JOBLINKは求人者と求職者がよりカジュアルにつながるためのSNSです。
-    .section
-      .center
-        .row
-          .col.s12
-            = link_to '求人を探す', job_postings_path, class: 'btn-large'
-        .row
-          .col.s6
-            p.white-text
-              | 求人者の方はこちらから
-            = link_to "アカウント登録", new_job_offerer_registration_path, class: 'btn'
-            p = link_to "ログイン", new_job_offerer_session_path, class: 'white-text'
-          .col.s6
-            p.white-text
-              | 求職者の方はこちらから
-            = link_to 'アカウント登録', new_job_seeker_registration_path, class: 'btn'
-            p  = link_to "ログイン", new_job_seeker_session_path, class: 'white-text'
+.section
+  .row
+    .col.l6.s12
+      .section
+        = image_tag '/landing.jpg', class: 'responsive-img'
+    .col.l6.s12
+      .section
+        h1.center
+          | JOBLINK
+        p.center
+          | JOBLINKは求人者と求職者がよりカジュアルにつながるためのSNSです。
+      .section
+        .center
+          .row
+            .col.s12
+              = link_to '求人を探す', job_postings_path, class: 'btn-large'
+          .row
+            .col.s6
+              p 求人者の方はこちらから
+              = link_to "アカウント登録", new_job_offerer_registration_path, class: 'btn'
+              p = link_to "ログイン", new_job_offerer_session_path
+            .col.s6
+              p 求職者の方はこちらから
+              = link_to 'アカウント登録', new_job_seeker_registration_path, class: 'btn'
+              p  = link_to "ログイン", new_job_seeker_session_path
 .section
   .container
     .row
