@@ -20,7 +20,10 @@
       - if correct_user? && @job_offerer.admin?
         i.material-icons check_circle
     p
-      = @profile.job_offerer.email
+      - if @job_offerer.admin?
+        | @administrator
+      - else
+        = @profile.job_offerer.email
   h6
     = @profile.bio
   .row
