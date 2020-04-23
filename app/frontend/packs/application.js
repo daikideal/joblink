@@ -6,8 +6,6 @@
 import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
 
-import '../stylesheets/actiontext'
-
 require("jquery")
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
