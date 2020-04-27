@@ -1,7 +1,7 @@
 # JOBLINK
 
 ## 概要
-Ruby on Rails × AWSで作成した、技術ポートフォリオとしてのビジネスSNSです。
+Ruby on Rails × Docker × AWSで作成した、技術ポートフォリオとしてのビジネスSNSです。
 <br>
 相手や求人を検索し、気になったものがあればチャットでコミュニケーションをとることができます。
 
@@ -69,6 +69,14 @@ Ruby on Rails × AWSで作成した、技術ポートフォリオとしてのビ
 - 一覧表示のページネーション(kaminari)
 - リアルタイムチャット
   - チャットルーム作成、退出
-  - 送信メッセージのリアルタイム反映(ActionCable, ElastiCache Redis)
+  - 送信メッセージのリアルタイム反映(ActionCable, アダプターとしてElastiCache Redis)
 - 自動単体テスト(Rspec)
 - 自動結合テスト(Rspec)
+
+## アピールポイント
+- Railsやgemのバージョンをなるべく最新に近づけて開発に挑戦！
+- 使いやすさを意識したUI/UX！
+- 開発環境でDocker, docker-composeを利用、本番環境のコンテナ基盤にはECSを採用することでモダンなインフラを構築！
+- AWSのマネージドサービスを多数使用！
+- master, develop, feature, fix, hotfixとブランチを切り分けることで実際のチーム開発を意識！
+- 途中からはpull request, issueも活用し、GitHubの習得を意識！
