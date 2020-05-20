@@ -47,7 +47,7 @@ Ruby on Rails × Docker × AWSで作成した、技術ポートフォリオと�
     - Git
     - GitHub
 ### インフラアーキテクチャ図
-![JOBLINK_ver1 0](https://user-images.githubusercontent.com/54879050/80313517-47070a80-8826-11ea-9d9e-7c2c29213d70.png)
+![JOBLINK_ver1 1](https://user-images.githubusercontent.com/54879050/82392094-f3cb5500-9a7d-11ea-9e38-ff61c411e12a.png)
 
 ## 機能
 - ユーザー管理
